@@ -1,0 +1,16 @@
+{
+    "clips": [
+        {
+            "name": "Stimulus",
+            "children": [
+                {
+                    "content": "import { Controller } from \"stimulus\"\n\nexport default class extends Controller {\n\t${:Code}\n}",
+                    "name": "Stimulus Controller",
+                    "scope": "editor",
+                    "syntax": "javascript",
+                    "trigger": "Stimulus Controller"
+                }
+            ]
+        }
+    ]
+}

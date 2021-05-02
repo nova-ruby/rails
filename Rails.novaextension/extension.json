@@ -1,9 +1,103 @@
 {
-  "identifier": "com.tommasonegri.Rails",
-  "name": "Rails",
-  "organization": "Tommaso Negri",
-  "description": "Lorem ipsum, dolor sit amet.",
-  "version": "0.1",
-  "main": "main.dist.js",
-  "categories": []
+    "identifier": "com.tommasonegri.Rails",
+    "name": "Ruby on Rails",
+    "organization": "Tommaso Negri",
+    "description": "Lorem ipsum, dolor sit amet.",
+    "version": "0.1",
+    "main": "main.dist.js",
+    "categories": [],
+    "entitlements": {
+        "filesystem": "readwrite",
+        "process": true
+    },
+    "activationEvents": [
+        "onLanguage:html+erb",
+        "onLanguage:ruby",
+        "onWorkspaceContains:*.rb",
+        "onWorkspaceContains:*.erb"
+    ],
+    "commands": {
+        "extensions": [
+            {
+                "title": "Open Latest Migration",
+                "command": "tommasonegri.rails.openLatestMigration"
+            },
+            {
+                "title": "Search Migration",
+                "command": "tommasonegri.rails.listMigrations"
+            },
+            { "separator": true },
+            {
+                "title": "Search Documentation",
+                "command": "tommasonegri.rails.documentation.search"
+            },
+            { "separator": true },
+            {
+                "title": "Rails Guides",
+                "command": "tommasonegri.rails.documentation.openRailsGuides"
+            },
+            {
+                "title": "Rails API",
+                "command": "tommasonegri.rails.documentation.openRailsAPI"
+            },
+            {
+                "title": "Rails Forum",
+                "command": "tommasonegri.rails.documentation.openRailsForum"
+            },
+            {
+                "title": "Turbo Reference",
+                "command": "tommasonegri.rails.documentation.openTurboReference"
+            },
+            {
+                "title": "Stimulus Reference",
+                "command": "tommasonegri.rails.documentation.openStimulusReference"
+            }
+        ],
+        "editor": [
+            {
+                "title": "Rails ERB Tag Switcher",
+                "command": "tommasonegri.rails.erb.tagSwitcher",
+                "shortcut": "cmd-shift->",
+                "when": "editorHasFocus",
+                "filters": {
+                    "syntaxes": ["erb", "html+erb"]
+                }
+            }
+        ],
+        "command-palette": [
+            {
+                "title": "Open Alternate File",
+                "command": "rails-navigation.openAlternateFile"
+            },
+            {
+                "title": "Reload About Rails Sidebar",
+                "command": "tommasonegri.rails.commands.sidebar.aboutRails.reload"
+            }
+        ]
+    },
+    "sidebars": [
+        {
+            "id": "tommasonegri.rails.sidebar",
+            "name": "Rails",
+            "smallImage": "RailsSidebarSmall",
+            "smallSelectedImage": "RailsSidebarSmallSelected",
+            "largeImage": "RailsSidebarLarge",
+            "largeSelectedImage": "RailsSidebarLargeSelected",
+            "sections": [
+                {
+                    "id": "tommasonegri.rails.sidebar.railsInfo",
+                    "name": "About Rails",
+                    "placeholderImage": "RailsLogo",
+                    "placeholderText": "Ruby on Rails not detected in the current workspace",
+                    "headerCommands": [
+                        {
+                            "title": "Refresh",
+                            "image": "__builtin.refresh",
+                            "command": "tommasonegri.rails.commands.sidebar.aboutRails.reload"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }
