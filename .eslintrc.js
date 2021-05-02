@@ -6,7 +6,6 @@ module.exports = {
     },
     extends: ["plugin:prettier/recommended"],
     plugins: ["nova", "prettier"],
-    // add your custom rules here
     rules: {
         "prettier/prettier": "error",
     },
