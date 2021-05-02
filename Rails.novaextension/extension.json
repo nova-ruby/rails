@@ -1,0 +1,9 @@
+{
+  "identifier": "com.tommasonegri.Rails",
+  "name": "Rails",
+  "organization": "Tommaso Negri",
+  "description": "Lorem ipsum, dolor sit amet.",
+  "version": "0.1",
+  "main": "main.dist.js",
+  "categories": []
+}

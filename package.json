@@ -1,0 +1,24 @@
+{
+    "name": "nova-rails",
+    "version": "0.1.0",
+    "description": "Rails support for Nova Editor.",
+    "main": "src/Scripts/main.js",
+    "scripts": {
+        "build": "npx rollup -c",
+        "watch": "onchange -i \"src/**/*.js\" \"src/**/*.json\" -- npm run build",
+        "publish": "npx rollup -v",
+        "develop": "rollup -c"
+    },
+    "author": "Tommaso Negri",
+    "license": "MIT",
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "eslint": "^7.25.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-nova": "^1.5.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "onchange": "^7.1.0",
+        "rollup": "^2.46.0"
+    }
+}

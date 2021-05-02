@@ -1,0 +1,15 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\nnpm run build"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\nnpm run watch"
+    }
+  },
+  "identifier" : "CC149652-8416-4755-8129-71B1718A2D13",
+  "openLogOnRun" : "start",
+  "persistent" : true
+}
