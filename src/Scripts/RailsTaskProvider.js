@@ -1,11 +1,21 @@
+import { isRailsProject } from "./helpers";
 import isTaskRailsServerProviderEnabled from "./config/general/taskRailsServerProvider";
 
 export default class RailsTaskProvider {
-    constructor() {}
+    constructor() {
+        this.isRailsProject = false;
 
-    provideTasks() {
-        // TODO: Check if the workspace contains a Rails project
+        this.checkIsRailsProject();
+    }
+
+    async provideTasks() {
         if (!isTaskRailsServerProviderEnabled()) {
+            return [];
+        }
+
+        await this.checkIsRailsProject();
+
+        if (!this.isRailsProject) {
             return [];
         }
 
@@ -21,5 +31,15 @@ export default class RailsTaskProvider {
         );
 
         return [task];
+    }
+
+    async checkIsRailsProject() {
+        await isRailsProject()
+            .then((response) => {
+                this.isRailsProject = response;
+            })
+            .catch((err) => {
+                console.error("Rails Task Provider says:", err);
+            });
     }
 }
