@@ -16,6 +16,10 @@ nova.commands.register(
     }
 );
 
+nova.commands.register("tommasonegri.rails.commands.reload", () => {
+    reload();
+});
+
 // Register a Nova task assistant
 nova.assistants.registerTaskAssistant(new RailsTaskProvider(), {
     identifier: "tommasonegri.rails.tasks.rails",
@@ -75,5 +79,12 @@ async function reload() {
     //     );
     //
 
-    await asyncActivate();
+    await asyncActivate()
+        .then(() => {
+            console.log("Hello from Rails 💎");
+        })
+        .catch((err) => {
+            console.error("Failed to activate with error:", err);
+            nova.workspace.showErrorMessage(err);
+        });
 }

@@ -1,5 +1,5 @@
 import { erbTagSwitcher } from "./commands/erbTagSwitcher";
-import { railsOpenAlternateFile } from "./commands/openAlternateFile";
+import RailsAlternateFile from "./commands/RailsAlternateFile";
 import RailsMigrations from "./commands/RailsMigrations";
 import RailsDocumentation from "./commands/RailsDocumentation";
 
@@ -12,49 +12,53 @@ export default function registerCommands() {
     );
 
     nova.commands.register(
-        "tommasonegri.rails.openLatestMigration",
-        (workspace) => {
+        "tommasonegri.rails.commands.migrations.openLatest",
+        () => {
             const railsMigrations = new RailsMigrations();
             railsMigrations.openLatestMigration();
         }
     );
 
-    nova.commands.register("tommasonegri.rails.listMigrations", (workspace) => {
-        const railsMigrations = new RailsMigrations();
-        railsMigrations.listMigrations();
-    });
+    nova.commands.register(
+        "tommasonegri.rails.commands.migrations.list",
+        () => {
+            const railsMigrations = new RailsMigrations();
+            railsMigrations.listMigrations();
+        }
+    );
 
     nova.commands.register(
-        "rails-navigation.openAlternateFile",
-        (workspace) => {
-            railsOpenAlternateFile();
+        "tommasonegri.rails.commands.openAlternateFile",
+        () => {
+            const railsAlternateFile = new RailsAlternateFile();
+            railsAlternateFile.alternate();
         }
     );
 
     // Register Nova commands for opening Documentations
     nova.commands.register(
-        "tommasonegri.rails.documentation.openRailsGuides",
+        "tommasonegri.rails.commands.documentation.openRailsGuides",
         () => {
             const railsDocumentation = new RailsDocumentation();
             railsDocumentation.openDocs("https://guides.rubyonrails.org");
         }
     );
     nova.commands.register(
-        "tommasonegri.rails.documentation.openRailsAPI",
+        "tommasonegri.rails.commands.documentation.openRailsAPI",
         () => {
             const railsDocumentation = new RailsDocumentation();
             railsDocumentation.openDocs("https://api.rubyonrails.org");
         }
     );
     nova.commands.register(
-        "tommasonegri.rails.documentation.openRailsForum",
+        "tommasonegri.rails.commands.documentation.openRailsForum",
         () => {
             const railsDocumentation = new RailsDocumentation();
             railsDocumentation.openDocs("https://discuss.rubyonrails.org");
         }
     );
     nova.commands.register(
-        "tommasonegri.rails.documentation.openTurboReference",
+        "tommasonegri.rails.commands.documentation.openTurboReference",
         () => {
             const railsDocumentation = new RailsDocumentation();
             railsDocumentation.openDocs(
@@ -63,7 +67,7 @@ export default function registerCommands() {
         }
     );
     nova.commands.register(
-        "tommasonegri.rails.documentation.openStimulusReference",
+        "tommasonegri.rails.commands.documentation.openStimulusReference",
         () => {
             const railsDocumentation = new RailsDocumentation();
             railsDocumentation.openDocs(
@@ -73,8 +77,11 @@ export default function registerCommands() {
     );
 
     // Register a Nova command for Searching the Documentation with the Command Palette
-    nova.commands.register("tommasonegri.rails.documentation.search", () => {
-        const railsDocumentation = new RailsDocumentation();
-        railsDocumentation.searchDocs();
-    });
+    nova.commands.register(
+        "tommasonegri.rails.commands.documentation.search",
+        () => {
+            const railsDocumentation = new RailsDocumentation();
+            railsDocumentation.searchDocs();
+        }
+    );
 }

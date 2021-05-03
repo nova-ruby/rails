@@ -1,16 +1,4 @@
-// export async function isRailsProject() {
-//     return new Promise((resolve, reject) => {
-//         if (
-//             nova.fs.stat(nova.path.join(nova.workspace.path, "db", "migrate"))
-//         ) {
-//             resolve(true);
-//         } else {
-//             reject(false);
-//         }
-//     });
-// }
-
-export async function isRailsProject() {
+export async function aboutRails() {
     return new Promise((resolve, reject) => {
         const process = new Process("/usr/bin/env", {
             cwd: nova.workspace.path,

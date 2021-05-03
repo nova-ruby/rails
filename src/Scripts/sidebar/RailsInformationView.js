@@ -1,4 +1,4 @@
-import { isRailsProject } from "../helpers";
+import { aboutRails } from "../helpers";
 
 export default class RailsInformationView {
     constructor(emitter) {
@@ -54,7 +54,7 @@ export default class RailsInformationView {
             identifier: "databaseSchemaVersion",
         };
 
-        isRailsProject()
+        aboutRails()
             .then((response) => {
                 console.log("Rails detected");
                 this.isRailsDetected = true;

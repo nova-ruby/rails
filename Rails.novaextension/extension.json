@@ -19,38 +19,43 @@
     "commands": {
         "extensions": [
             {
+                "title": "Open Alternate File",
+                "command": "tommasonegri.rails.commands.openAlternateFile"
+            },
+            { "separator": true },
+            {
                 "title": "Open Latest Migration",
-                "command": "tommasonegri.rails.openLatestMigration"
+                "command": "tommasonegri.rails.commands.migrations.openLatest"
             },
             {
-                "title": "Search Migration",
-                "command": "tommasonegri.rails.listMigrations"
+                "title": "List Migrations",
+                "command": "tommasonegri.rails.commands.migrations.list"
             },
             { "separator": true },
             {
                 "title": "Search Documentation",
-                "command": "tommasonegri.rails.documentation.search"
+                "command": "tommasonegri.rails.commands.documentation.search"
             },
             { "separator": true },
             {
                 "title": "Rails Guides",
-                "command": "tommasonegri.rails.documentation.openRailsGuides"
+                "command": "tommasonegri.rails.commands.documentation.openRailsGuides"
             },
             {
                 "title": "Rails API",
-                "command": "tommasonegri.rails.documentation.openRailsAPI"
+                "command": "tommasonegri.rails.commands.documentation.openRailsAPI"
             },
             {
                 "title": "Rails Forum",
-                "command": "tommasonegri.rails.documentation.openRailsForum"
+                "command": "tommasonegri.rails.commands.documentation.openRailsForum"
             },
             {
                 "title": "Turbo Reference",
-                "command": "tommasonegri.rails.documentation.openTurboReference"
+                "command": "tommasonegri.rails.commands.documentation.openTurboReference"
             },
             {
                 "title": "Stimulus Reference",
-                "command": "tommasonegri.rails.documentation.openStimulusReference"
+                "command": "tommasonegri.rails.commands.documentation.openStimulusReference"
             }
         ],
         "editor": [
@@ -66,8 +71,8 @@
         ],
         "command-palette": [
             {
-                "title": "Open Alternate File",
-                "command": "rails-navigation.openAlternateFile"
+                "title": "Reload Extension",
+                "command": "tommasonegri.rails.commands.reload"
             },
             {
                 "title": "Reload About Rails Sidebar",
@@ -96,6 +101,39 @@
                             "command": "tommasonegri.rails.commands.sidebar.aboutRails.reload"
                         }
                     ]
+                }
+            ]
+        }
+    ],
+    "config": [
+        {
+            "title": "General",
+            "description": "VLS (Vue Language Server) is a language server implementation compatible with Language Server Protocol. It is developed as part of the Vetur project.",
+            "type": "section",
+            "children": [
+                {
+                    "key": "tommasonegri.rails.config.general.task.railsServerProvider",
+                    "title": "Provide Task for Rails Server",
+                    "description": "Include completion for module export and auto import them.",
+                    "type": "boolean",
+                    "default": true
+                }
+            ]
+        }
+    ],
+    "configWorkspace": [
+        {
+            "title": "General",
+            "description": "VLS (Vue Language Server) is a language server implementation compatible with Language Server Protocol. It is developed as part of the Vetur project.",
+            "type": "section",
+            "children": [
+                {
+                    "key": "tommasonegri.rails.config.general.task.railsServerProvider",
+                    "title": "Provide Task for Rails Server",
+                    "description": "Include completion for module export and auto import them.",
+                    "type": "enum",
+                    "values": ["Global Default", "Enable", "Disable"],
+                    "default": "Global Default"
                 }
             ]
         }
