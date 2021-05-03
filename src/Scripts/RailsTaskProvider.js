@@ -21,11 +21,10 @@ export default class RailsTaskProvider {
 
         let task = new Task("Rails Server");
 
-        // TODO: Provide the functionality for starting the rails server
         task.setAction(
             Task.Run,
-            new TaskProcessAction("/usr/bin/say", {
-                args: ["I'm Running!"],
+            new TaskProcessAction("/usr/bin/env", {
+                args: ["rails", "server"],
                 env: {},
             })
         );
