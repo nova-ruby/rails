@@ -2,10 +2,33 @@
     "identifier": "com.tommasonegri.Rails",
     "name": "Ruby on Rails",
     "organization": "Tommaso Negri",
-    "description": "Lorem ipsum, dolor sit amet.",
+    "description": "Ruby on Rails and Ruby support for Nova editor.",
     "version": "0.1",
     "main": "main.dist.js",
-    "categories": [],
+    "license": "MIT",
+    "keywords": [
+        "ruby",
+        "rails",
+        "nova",
+        "syntax",
+        "ruby on rails",
+        "solargraph",
+        "migrations",
+        "documentation"
+    ],
+    "repository": "https://github.com/tommasongr/nova-rails",
+    "homepage": "https://tommasonegri.com/?ref=nova-rails",
+    "funding": "https://www.paypal.com/paypalme/tommasonegri/15EUR",
+    "bugs": "https://github.com/tommasongr/nova-rails/issues",
+    "categories": [
+        "languages",
+        "clips",
+        "commands",
+        "completions",
+        "sidebars",
+        "tasks",
+        "formatters"
+    ],
     "entitlements": {
         "filesystem": "readwrite",
         "process": true
