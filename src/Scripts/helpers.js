@@ -1,4 +1,4 @@
-export function isRailsProject() {
+export function isRailsInProject() {
     const gemfilePath = nova.workspace.path + "/Gemfile";
 
     if (!nova.fs.access(gemfilePath, nova.fs.F_OK)) {

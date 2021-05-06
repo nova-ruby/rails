@@ -4,6 +4,7 @@ import RailsTaskProvider from "./RailsTaskProvider";
 
 //********* REGISTRATIONS *********//
 
+// Register Nova commands
 registerCommands();
 
 // Register a Nova command for reloading the Sidebar About Rails View
