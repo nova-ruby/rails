@@ -3,19 +3,18 @@ import isTaskRailsServerProviderEnabled from "./config/general/taskRailsServerPr
 
 export default class RailsTaskProvider {
     constructor() {
-        this.isRailsProject = false;
-
-        this.checkIsRailsProject();
+        // this.isRailsProject = false;
+        // this.checkIsRailsProject();
     }
 
-    async provideTasks() {
+    provideTasks() {
         if (!isTaskRailsServerProviderEnabled()) {
             return [];
         }
 
-        await this.checkIsRailsProject();
+        // await this.checkIsRailsProject();
 
-        if (!this.isRailsProject) {
+        if (!isRailsProject()) {
             return [];
         }
 
@@ -32,13 +31,13 @@ export default class RailsTaskProvider {
         return [task];
     }
 
-    async checkIsRailsProject() {
-        await isRailsProject()
-            .then((response) => {
-                this.isRailsProject = response;
-            })
-            .catch((err) => {
-                console.error("Rails Task Provider says:", err);
-            });
-    }
+    // async checkIsRailsProject() {
+    //     await isRailsProject()
+    //         .then((response) => {
+    //             this.isRailsProject = response;
+    //         })
+    //         .catch((err) => {
+    //             console.error("Rails Task Provider says:", err);
+    //         });
+    // }
 }

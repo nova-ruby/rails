@@ -1,31 +1,17 @@
-export async function isRailsProject() {
-    return new Promise((resolve, reject) => {
-        const process = new Process("/usr/bin/env", {
-            cwd: nova.workspace.path,
-            args: ["rails", "about"],
-            stdio: ["ignore", "pipe", "ignore"],
-            shell: true,
-        });
-        let str = "";
+export function isRailsProject() {
+    const gemfilePath = nova.workspace.path + "/Gemfile";
 
-        process.onStdout((output) => {
-            str += output.trim();
-        });
+    if (!nova.fs.access(gemfilePath, nova.fs.F_OK)) {
+        return false;
+    }
 
-        process.onDidExit((status) => {
-            if (status === 0) {
-                if (str.indexOf("About your application's environment") === 0) {
-                    resolve(true);
-                } else {
-                    resolve(false);
-                }
-            } else {
-                reject(status);
-            }
-        });
+    const gemfile = nova.fs.open(gemfilePath).read();
 
-        process.start();
-    });
+    if (gemfile.indexOf("gem 'rails'") !== -1) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 export async function aboutRails() {
