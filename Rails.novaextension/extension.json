@@ -3,7 +3,7 @@
     "name": "Ruby on Rails",
     "organization": "Tommaso Negri",
     "description": "Ruby on Rails and Ruby support for Nova editor.",
-    "version": "0.1",
+    "version": "0.5",
     "main": "main.dist.js",
     "license": "MIT",
     "keywords": [
@@ -12,7 +12,6 @@
         "nova",
         "syntax",
         "ruby on rails",
-        "solargraph",
         "migrations",
         "documentation"
     ],
@@ -21,7 +20,6 @@
     "funding": "https://www.paypal.com/paypalme/tommasonegri/15EUR",
     "bugs": "https://github.com/tommasongr/nova-rails/issues",
     "categories": [
-        "languages",
         "clips",
         "commands",
         "completions",
@@ -83,8 +81,8 @@
         ],
         "editor": [
             {
-                "title": "Rails ERB Tag Switcher",
-                "command": "tommasonegri.rails.erb.tagSwitcher",
+                "title": "ERB Tag Switcher",
+                "command": "tommasonegri.rails.commands.erb.tagSwitcher",
                 "shortcut": "cmd-shift->",
                 "when": "editorHasFocus",
                 "filters": {
@@ -130,35 +128,36 @@
     ],
     "config": [
         {
-            "title": "General",
-            "description": "VLS (Vue Language Server) is a language server implementation compatible with Language Server Protocol. It is developed as part of the Vetur project.",
-            "type": "section",
-            "children": [
-                {
-                    "key": "tommasonegri.rails.config.general.task.railsServerProvider",
-                    "title": "Provide Task for Rails Server",
-                    "description": "Include completion for module export and auto import them.",
-                    "type": "boolean",
-                    "default": true
-                }
-            ]
+            "key": "tommasonegri.rails.config.general.task.railsServerProvider",
+            "title": "Provide Task for Rails Server",
+            "description": "Generate a Task for starting the Rails Server.",
+            "type": "boolean",
+            "default": true
+        },
+        {
+            "key": "tommasonegri.rails.config.general.statusNotifications",
+            "title": "Status Notifications",
+            "description": "Show a notification when the server changes status. For example on realod, stop and start. If disabled you will only be notified on crashes or errors.",
+            "type": "boolean",
+            "default": true
         }
     ],
     "configWorkspace": [
         {
-            "title": "General",
-            "description": "VLS (Vue Language Server) is a language server implementation compatible with Language Server Protocol. It is developed as part of the Vetur project.",
-            "type": "section",
-            "children": [
-                {
-                    "key": "tommasonegri.rails.config.general.task.railsServerProvider",
-                    "title": "Provide Task for Rails Server",
-                    "description": "Include completion for module export and auto import them.",
-                    "type": "enum",
-                    "values": ["Global Default", "Enable", "Disable"],
-                    "default": "Global Default"
-                }
-            ]
+            "key": "tommasonegri.rails.config.general.task.railsServerProvider",
+            "title": "Provide Task for Rails Server",
+            "description": "Generate a Task for starting the Rails Server.",
+            "type": "enum",
+            "values": ["Global Default", "Enable", "Disable"],
+            "default": "Global Default"
+        },
+        {
+            "key": "tommasonegri.rails.config.general.statusNotifications",
+            "title": "Status Notifications",
+            "description": "Show a notification when the server changes status. For example on realod, stop and start. If disabled you will only be notified on crashes or errors.",
+            "type": "enum",
+            "values": ["Global Default", "Enable", "Disable"],
+            "default": "Global Default"
         }
     ]
 }

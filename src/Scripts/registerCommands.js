@@ -5,7 +5,7 @@ import RailsDocumentation from "./commands/RailsDocumentation";
 
 export default function registerCommands() {
     nova.commands.register(
-        "tommasonegri.rails.erb.tagSwitcher",
+        "tommasonegri.rails.commands.erb.tagSwitcher",
         async (editor) => {
             erbTagSwitcher(editor);
         }

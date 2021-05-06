@@ -1,5 +1,5 @@
-import { isRailsInProject } from "./helpers";
-import isTaskRailsServerProviderEnabled from "./config/general/taskRailsServerProvider";
+import { isRailsInProject } from "../helpers";
+import isTaskRailsServerProviderEnabled from "../config/general/taskRailsServerProvider";
 
 export default class RailsTaskProvider {
     constructor() {}
