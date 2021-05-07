@@ -102,6 +102,10 @@
             {
                 "title": "Kill Puma Server",
                 "command": "tommasonegri.rails.commands.pumaServer.kill"
+            },
+            {
+                "title": "Migrate",
+                "command": "tommasonegri.rails.commands.database.migrate"
             }
         ]
     },

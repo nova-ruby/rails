@@ -3,6 +3,7 @@ import RailsAlternateFile from "./commands/RailsAlternateFile";
 import RailsMigrations from "./commands/RailsMigrations";
 import RailsDocumentation from "./commands/RailsDocumentation";
 import PumaServer from "./commands/PumaServer";
+import RailsDatabase from "./commands/RailsDatabase";
 
 export default function registerCommands() {
     nova.commands.register(
@@ -94,6 +95,15 @@ export default function registerCommands() {
         () => {
             const pumaServer = new PumaServer();
             pumaServer.kill();
+        }
+    );
+
+    // Register a Nova command for Applying the latest Migration
+    nova.commands.register(
+        "tommasonegri.rails.commands.database.migrate",
+        () => {
+            const railsDatabase = new RailsDatabase();
+            railsDatabase.migrate();
         }
     );
 }
