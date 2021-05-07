@@ -1,3 +1,9 @@
+## Version 0.6 - Alpha
+
+### FEATURES
+
+-   Added a command for killing Puma server processes
+
 ## Version 0.5 - Alpha
 
 ### FEATURES
