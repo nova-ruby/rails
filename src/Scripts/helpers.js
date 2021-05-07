@@ -70,6 +70,7 @@ export async function aboutRails() {
         });
 
         process.onDidExit((status) => {
+            // Split each line of the output in the strings array
             strings = str.match(/[^\r\n]+/g);
 
             if (
