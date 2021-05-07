@@ -2,6 +2,7 @@ import { erbTagSwitcher } from "./commands/erbTagSwitcher";
 import RailsAlternateFile from "./commands/RailsAlternateFile";
 import RailsMigrations from "./commands/RailsMigrations";
 import RailsDocumentation from "./commands/RailsDocumentation";
+import PumaServer from "./commands/PumaServer";
 
 export default function registerCommands() {
     nova.commands.register(
@@ -82,6 +83,17 @@ export default function registerCommands() {
         () => {
             const railsDocumentation = new RailsDocumentation();
             railsDocumentation.searchDocs();
+        }
+    );
+
+    // Register a Nova command for Killing Puma Server.
+    // Useful for recovering from a not properly stopped server
+    // for example after a Nova crash.
+    nova.commands.register(
+        "tommasonegri.rails.commands.pumaServer.kill",
+        () => {
+            const pumaServer = new PumaServer();
+            pumaServer.kill();
         }
     );
 }

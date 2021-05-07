@@ -98,6 +98,10 @@
             {
                 "title": "Reload About Rails Sidebar",
                 "command": "tommasonegri.rails.commands.sidebar.aboutRails.reload"
+            },
+            {
+                "title": "Kill Puma Server",
+                "command": "tommasonegri.rails.commands.pumaServer.kill"
             }
         ]
     },
