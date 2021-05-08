@@ -52,6 +52,10 @@
                 "title": "List Migrations",
                 "command": "tommasonegri.rails.commands.migrations.list"
             },
+            {
+                "title": "Rollback",
+                "command": "tommasonegri.rails.commands.migrations.rollback"
+            },
             { "separator": true },
             {
                 "title": "Search Documentation",

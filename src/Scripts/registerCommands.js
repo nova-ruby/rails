@@ -105,4 +105,13 @@ export default function registerCommands() {
             railsMigrations.migrate();
         }
     );
+
+    // Register a Nova command for Applying a Rollback
+    nova.commands.register(
+        "tommasonegri.rails.commands.migrations.rollback",
+        () => {
+            const railsMigrations = new RailsMigrations();
+            railsMigrations.rollback();
+        }
+    );
 }

@@ -42,6 +42,12 @@ export default class RailsMigrations {
 
     async migrate() {
         if (!isRailsInProject()) {
+            console.error("Something went wrong with the migrate command");
+
+            this.showError(
+                "Something went wrong with the migrate command. Does the workspace contain a Rails project?"
+            );
+
             return;
         }
 
@@ -76,10 +82,65 @@ export default class RailsMigrations {
                     "All the migrations are already applied."
                 );
             } else {
-                console.error("Something went wrong with the migrate command");
+                console.error("Migrate command", str);
 
                 this.showError(
-                    "Something went wrong with the migrate command. Does the workspace contain a Rails project?"
+                    "Something went wrong with the migrate command. Check out the Extension Console for more information."
+                );
+            }
+        });
+
+        process.start();
+    }
+
+    async rollback() {
+        if (!isRailsInProject()) {
+            console.error("Something went wrong with the rollback command");
+
+            this.showError(
+                "Something went wrong with the rollback command. Does the workspace contain a Rails project?"
+            );
+
+            return;
+        }
+
+        const process = new Process("usr/bin/env", {
+            cwd: nova.workspace.path,
+            args: ["rails", "db:rollback"],
+            stdio: ["ignore", "pipe", "ignore"],
+        });
+        let str = "";
+
+        process.onStdout((output) => {
+            str += output.trim();
+        });
+
+        process.onDidExit((status) => {
+            console.log(status);
+            console.log(str);
+            if (status === 0 && str.length > 0) {
+                console.log("Rollback applied");
+
+                showNotification(
+                    "rails-database-rollbacked",
+                    "Rollback applied",
+                    false,
+                    "The rollback has been applied correctly."
+                );
+            } else if (status === 0) {
+                console.log("Nothing to rollback to");
+
+                showNotification(
+                    "rails-database-no-rollbacked",
+                    "Nothing to rollback",
+                    false,
+                    "No migrations to rollback."
+                );
+            } else {
+                console.error("Rollback command:", str);
+
+                this.showError(
+                    "Something went wrong with the rollback command. Check out the Extension Console for more information."
                 );
             }
         });
