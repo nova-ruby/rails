@@ -105,7 +105,7 @@
             },
             {
                 "title": "Migrate",
-                "command": "tommasonegri.rails.commands.database.migrate"
+                "command": "tommasonegri.rails.commands.migrations.migrate"
             }
         ]
     },
