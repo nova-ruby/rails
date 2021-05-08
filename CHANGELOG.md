@@ -5,6 +5,7 @@
 -   Added a command for killing Puma server processes
 -   Added a command for applying the latest migration
 -   Added a command for applying a rollback
+-   Added a command for opening the Extension Wiki
 
 ## Version 0.5 - Alpha
 
