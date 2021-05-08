@@ -53,6 +53,10 @@
                 "command": "tommasonegri.rails.commands.migrations.list"
             },
             {
+                "title": "Migrate",
+                "command": "tommasonegri.rails.commands.migrations.migrate"
+            },
+            {
                 "title": "Rollback",
                 "command": "tommasonegri.rails.commands.migrations.rollback"
             },
@@ -106,10 +110,6 @@
             {
                 "title": "Kill Puma Server",
                 "command": "tommasonegri.rails.commands.pumaServer.kill"
-            },
-            {
-                "title": "Migrate",
-                "command": "tommasonegri.rails.commands.migrations.migrate"
             }
         ]
     },
