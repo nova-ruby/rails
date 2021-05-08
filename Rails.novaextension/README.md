@@ -2,6 +2,10 @@
 
 This extension is still in Alpha and various features will be added later on. If you have any suggestion or you have some free time you are free to contribute.
 
+## Wiki
+
+Visit the [Wiki](https://github.com/tommasongr/nova-rails/wiki) for seeing all the available commands and features.
+
 ## Features
 
 ### Rails Server Task
