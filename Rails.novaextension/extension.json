@@ -85,6 +85,11 @@
             {
                 "title": "Stimulus Reference",
                 "command": "tommasonegri.rails.commands.documentation.openStimulusReference"
+            },
+            { "separator": true },
+            {
+                "title": "Extension Wiki",
+                "command": "tommasonegri.rails.commands.documentation.openExtensionWiki"
             }
         ],
         "editor": [

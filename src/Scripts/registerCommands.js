@@ -76,6 +76,15 @@ export default function registerCommands() {
             );
         }
     );
+    nova.commands.register(
+        "tommasonegri.rails.commands.documentation.openExtensionWiki",
+        () => {
+            const railsDocumentation = new RailsDocumentation();
+            railsDocumentation.openDocs(
+                "https://github.com/tommasongr/nova-rails/wiki"
+            );
+        }
+    );
 
     // Register a Nova command for Searching the Documentation with the Command Palette
     nova.commands.register(
