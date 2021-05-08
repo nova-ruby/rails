@@ -2,7 +2,7 @@ import { erbTagSwitcher } from "./commands/erbTagSwitcher";
 import RailsAlternateFile from "./commands/RailsAlternateFile";
 import RailsMigrations from "./commands/RailsMigrations";
 import RailsDocumentation from "./commands/RailsDocumentation";
-import PumaServer from "./commands/PumaServer";
+import RailsServer from "./commands/RailsServer";
 
 export default function registerCommands() {
     nova.commands.register(
@@ -92,8 +92,8 @@ export default function registerCommands() {
     nova.commands.register(
         "tommasonegri.rails.commands.pumaServer.kill",
         () => {
-            const pumaServer = new PumaServer();
-            pumaServer.kill();
+            const railsServer = new RailsServer();
+            railsServer.kill();
         }
     );
 

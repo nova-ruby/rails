@@ -1,4 +1,4 @@
-export default class PumaServer {
+export default class RailsServer {
     constructor() {}
 
     kill() {
