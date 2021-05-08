@@ -1,6 +1,6 @@
 {
     "name": "nova-rails",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "description": "Ruby on Rails and Ruby support for Nova editor.",
     "main": "src/Scripts/main.js",
     "scripts": {
