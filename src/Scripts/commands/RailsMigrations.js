@@ -57,7 +57,7 @@ export default class RailsMigrations {
         });
 
         process.onDidExit((status) => {
-            if (status === 0 && str > 0) {
+            if (status === 0 && str.length > 0) {
                 console.log("Migration applied");
 
                 showNotification(
