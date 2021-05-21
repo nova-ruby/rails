@@ -30,6 +30,14 @@ Quickly switch between `<%`, `<%=` & `<%#` with a single shortcut.
 
 Select a text to wrap it in ERB tags or just use `⌘-shift->` to create a tag and start typing the expression.
 
+### Stimulus Clips
+
+Start typing `Stimu...` in Javascript and HTML files for inserting Stimulus completions like Controller Scaffold, actions, classes, etc. Placeholders are formatted with the correct naming conventions.
+
+Stimulus Clips work also in Javascript and HTML derivate syntaxes like Typescript and HTML(ERB).\_
+
+![Stimulus Clips](https://raw.githubusercontent.com/tommasongr/nova-rails/main/docs/images/stimulus-clips.png)
+
 ## Features on their way
 
 -   Solargraph support
