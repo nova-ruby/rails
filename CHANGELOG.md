@@ -1,3 +1,10 @@
+## Version 0.7 - Alpha
+
+### FEATURES
+
+-   Added new Clips for Stimulus in HTML (100% coverage). Every Clip uses official naming conventions for placeholders, suggesting you the correct text format (camelCase, kebab-case, etc).
+    ![Stimulus Clips](https://raw.githubusercontent.com/tommasongr/nova-rails/main/docs/images/stimulus-clips.png)
+
 ## Version 0.6 - Alpha
 
 ### FEATURES
