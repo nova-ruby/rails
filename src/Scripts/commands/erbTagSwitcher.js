@@ -1,5 +1,7 @@
 export async function erbTagSwitcher(editor) {
-    console.log("————————————————————————————————————————————");
+    if (nova.inDevMode()) {
+        console.log("———— ERB TAG SWITCHER ————");
+    }
 
     let selectedRanges = editor.selectedRanges;
     const originalSelection = selectedRanges;
@@ -22,10 +24,6 @@ export async function erbTagSwitcher(editor) {
     //   // r.empty ? editor.getLineRangeForRange(r) : r
     // );
 
-    // console.log("🎉")
-    // console.log(editor.symbolAtPosition())
-    // console.log("🎉")
-
     selectedRanges = selectedRanges.map(function (r, index) {
         if (r.empty) {
             hasSelection[index] = false;
@@ -42,12 +40,12 @@ export async function erbTagSwitcher(editor) {
         return r;
     });
 
-    console.log("🎉");
-    console.log("hasSelection: " + hasSelection);
-    console.log("selectedRanges: " + selectedRanges);
-    console.log("entireLineRanges: " + entireLineRanges);
-    console.log("linePositions: " + linePositions);
-    console.log("🎉");
+    if (nova.inDevMode()) {
+        console.log("(ERB TAG) hasSelection:", hasSelection);
+        console.log("(ERB TAG) selectedRanges:", selectedRanges);
+        console.log("(ERB TAG) entireLineRanges:", entireLineRanges);
+        console.log("(ERB TAG) linePositions:", linePositions);
+    }
 
     const lengths = selectedRanges.map((r) => r.length);
     let newSelection = [];
@@ -57,12 +55,14 @@ export async function erbTagSwitcher(editor) {
             var cursorMove = 0;
             // const beforeCursorRange = new Range(entireLineRanges[index].start, entireLineRanges[index].start + linePositions[index])
             const beforeCursorRange = new Range(0, selectedRanges[index].start);
-            console.log(beforeCursorRange);
             const textBeforeCursor = editor.getTextInRange(beforeCursorRange);
             const text = editor.getTextInRange(range);
-            // console.log("selected text: " + text);
-            // console.log("selected text length: " + text.length);
-            // console.log("textBeforeCursor: " + textBeforeCursor);
+
+            if (nova.inDevMode()) {
+                console.log("(ERB TAG) beforeCursorRange:", beforeCursorRange);
+                console.log("(ERB TAG) selected text:", text);
+                console.log("(ERB TAG) selected text length:", text.length);
+            }
 
             const openingTagsToTheLeft = textBeforeCursor.match(/<%.?/g) || [];
             const openingTagsToTheLeftCount = openingTagsToTheLeft.length;
@@ -70,17 +70,32 @@ export async function erbTagSwitcher(editor) {
             const closingTagsToTheLeftCount = (
                 textBeforeCursor.match(/%>/g) || []
             ).length;
-            console.log("<% occurence " + openingTagsToTheLeftCount);
-            console.log("%> occurence " + closingTagsToTheLeftCount);
+
+            if (nova.inDevMode()) {
+                console.log(
+                    "(ERB TAG) <% occurence",
+                    openingTagsToTheLeftCount
+                );
+                console.log(
+                    "(ERB TAG) %> occurence",
+                    closingTagsToTheLeftCount
+                );
+            }
 
             if (hasSelection[index] == false) {
-                console.log("No selection");
+                if (nova.inDevMode()) {
+                    console.log("(ERB TAG) no selection");
+                }
+
                 if (openingTagsToTheLeftCount != closingTagsToTheLeftCount) {
-                    console.log("It's inside another tag");
-                    console.log(
-                        "lastOpeningTagBeforeCursor: " +
+                    if (nova.inDevMode()) {
+                        console.log("(ERB TAG) it's inside another tag");
+                        console.log(
+                            "(ERB TAG) lastOpeningTagBeforeCursor:",
                             lastOpeningTagBeforeCursor
-                    );
+                        );
+                    }
+
                     for (var i = 0; i < brackets.length; i++) {
                         if (
                             (lastOpeningTagBeforeCursor + " ").includes(
@@ -95,36 +110,64 @@ export async function erbTagSwitcher(editor) {
                             cursorMove =
                                 brackets[bracketsToUseIndex][0].length -
                                 existingBrackets[0].length;
-                            console.log(
-                                "changing bracket " + bracketsToUseIndex
-                            );
+
+                            if (nova.inDevMode()) {
+                                console.log(
+                                    "(ERB TAG) changing bracket:",
+                                    bracketsToUseIndex
+                                );
+                            }
                         }
                     }
                 } else {
-                    console.log("Not inside a tag");
+                    if (nova.inDevMode()) {
+                        console.log("(ERB TAG) not inside a tag");
+                    }
                 }
                 // e.replace(originalRange, bracketsToUse[0] + text + bracketsToUse[1]);
                 // cursorMove = bracketsToUse[0].length + text.length
             } else {
-                console.log("Has selection");
+                if (nova.inDevMode()) {
+                    console.log("(ERB TAG) has selection");
+                }
             }
 
-            console.log("bracketsToUseIndex: " + bracketsToUseIndex);
+            if (nova.inDevMode()) {
+                console.log(
+                    "(ERB TAG) bracketsToUseIndex:",
+                    bracketsToUseIndex
+                );
+            }
+
             bracketsToUse = brackets[bracketsToUseIndex];
             const originalRange = originalSelection[index];
 
             if (existingBrackets.length > 0) {
-                console.log("editor range: " + range);
-                // todo has to know what "var text" to repalce
+                // TODO: has to know what "var text" to replace
                 // var new_text = text.replace(existingBrackets[0], bracketsToUse[0]);
-                console.log(textBeforeCursor);
+
                 var fromLastTagToCursor = (textBeforeCursor.match(
                     /<%([^<%]*)$/
                 ) || [])[0];
-                console.log("fromLastTagToCursor: " + fromLastTagToCursor);
+
+                if (nova.inDevMode()) {
+                    console.log("(ERB TAG) editor range:", range);
+                    console.log(
+                        "(ERB TAG) textBeforeCursor:",
+                        textBeforeCursor
+                    );
+                    console.log(
+                        "(ERB TAG) fromLastTagToCursor:",
+                        fromLastTagToCursor
+                    );
+                }
 
                 if (fromLastTagToCursor == undefined) {
-                    console.log("ERB tags error");
+                    if (nova.inDevMode()) {
+                        console.error(
+                            "(ERB TAG) ERB tags error: FROM LAST TAG TO CURSOR"
+                        );
+                    }
                     return;
                 }
                 last_tag_repacement = fromLastTagToCursor.replace(
@@ -135,12 +178,25 @@ export async function erbTagSwitcher(editor) {
                     /<%([^<%]*)$/,
                     last_tag_repacement
                 );
-                // console.log(new_text)
-                // console.log("new_text.length "+new_text.length)
-                // console.log("textBeforeCursor.length "+textBeforeCursor.length)
+
+                if (nova.inDevMode()) {
+                    console.log("(ERB TAG) new text:", new_text);
+                    console.log("(ERB TAG) new text length:", new_text.length);
+                    console.log(
+                        "(ERB TAG) textBeforeCursor length:",
+                        textBeforeCursor.length
+                    );
+                }
+
                 e.replace(beforeCursorRange, new_text);
             } else {
-                console.log("🤔originalRange " + originalRange.length);
+                if (nova.inDevMode()) {
+                    console.log(
+                        "(ERB TAG) original range length:",
+                        originalRange.length
+                    );
+                }
+
                 if (originalRange.length > 0) {
                     e.replace(
                         originalRange,
