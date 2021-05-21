@@ -9,6 +9,48 @@
                     "scope": "editor",
                     "syntax": "javascript",
                     "trigger": "stimulus controller"
+                },
+                {
+                    "content": "data-controller=\"${:controller-identifier}\"",
+                    "name": "Stimulus Controller",
+                    "scope": "editor",
+                    "syntax": "html",
+                    "trigger": "stimulus controller"
+                },
+                {
+                    "content": "data-action=\"${:event}->${:controller-identifier}#${:actionName}\"",
+                    "name": "Stimulus Action",
+                    "scope": "editor",
+                    "syntax": "html",
+                    "trigger": "stimulus action"
+                },
+                {
+                    "content": "data-action=\"${:event}->${:controller-identifier}#${:actionName}:${:option}\"",
+                    "name": "Stimulus Action + Option",
+                    "scope": "editor",
+                    "syntax": "html",
+                    "trigger": "stimulus action + option"
+                },
+                {
+                    "content": "data-${:controller-identifier}-target=\"${:targetName}\"",
+                    "name": "Stimulus Target",
+                    "scope": "editor",
+                    "syntax": "html",
+                    "trigger": "stimulus target"
+                },
+                {
+                    "content": "data-${:controller-identifier}-${:value-name}-value=\"${:value}\"",
+                    "name": "Stimulus Value",
+                    "scope": "editor",
+                    "syntax": "html",
+                    "trigger": "stimulus value"
+                },
+                {
+                    "content": "data-${:controller-identifier}-${:class-name}-class=\"${:css-class}\"",
+                    "name": "Stimulus Class",
+                    "scope": "editor",
+                    "syntax": "html",
+                    "trigger": "stimulus class"
                 }
             ]
         }
