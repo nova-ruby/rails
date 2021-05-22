@@ -13,7 +13,8 @@
         "syntax",
         "ruby on rails",
         "migrations",
-        "documentation"
+        "documentation",
+        "stimulus"
     ],
     "repository": "https://github.com/tommasongr/nova-rails",
     "homepage": "https://tommasonegri.com/?ref=nova-rails",
