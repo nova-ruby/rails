@@ -7,7 +7,6 @@ import { isRailsInProject, showNotification } from "./helpers";
 
 // import RubyLanguageServer from "./other/RubyLanguageServer";
 
-nova.config.set(`${nova.extension.identifier}.extension.version`, "0.5");
 const versionChecker = new VersionChecker();
 versionChecker.check();
 
