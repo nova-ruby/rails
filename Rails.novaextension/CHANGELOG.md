@@ -1,3 +1,9 @@
+## Version 0.8 - Alpha
+
+### FEATURES
+
+-   Added a Version Checker for notify user of background updates
+
 ## Version 0.7 - Alpha
 
 ### FEATURES
