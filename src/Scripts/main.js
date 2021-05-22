@@ -1,10 +1,15 @@
 import registerCommands from "./registerCommands";
 import RailsInformationView from "./sidebar/RailsInformationView";
 import RailsTaskProvider from "./other/RailsTaskProvider";
+import VersionChecker from "./other/VersionChecker";
 
 import { isRailsInProject, showNotification } from "./helpers";
 
 // import RubyLanguageServer from "./other/RubyLanguageServer";
+
+nova.config.set(`${nova.extension.identifier}.extension.version`, "0.5");
+const versionChecker = new VersionChecker();
+versionChecker.check();
 
 //********* REGISTRATIONS *********//
 
