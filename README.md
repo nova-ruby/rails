@@ -1,4 +1,6 @@
-# Ruby on Rails for Nova editor - ALPHA
+![](https://raw.githubusercontent.com/tommasongr/nova-rails/main/Rails.novaextension/extension.png)
+
+# Ruby on Rails for Nova editor
 
 This extension is still in Alpha and various features will be added later on. If you have any suggestion or you have some free time you are free to contribute.
 
