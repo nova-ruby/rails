@@ -1,3 +1,11 @@
+## Version 0.9
+
+### DOCS
+
+-   Added extension icon in the README
+-   Added StimulusJS as keyword
+-   Exited from Alpha stage
+
 ## Version 0.8 - Alpha
 
 ### FEATURES
