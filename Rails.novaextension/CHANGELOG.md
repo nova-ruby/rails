@@ -1,3 +1,9 @@
+## Version 1.0
+
+### FEATURES
+
+-   Added Solargraph support with relative settings
+
 ## Version 0.9
 
 ### DOCS

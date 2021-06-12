@@ -3,7 +3,7 @@
     "name": "Ruby on Rails",
     "organization": "Tommaso Negri",
     "description": "Ruby on Rails and Ruby support for Nova editor.",
-    "version": "0.9",
+    "version": "1.0",
     "main": "main.dist.js",
     "license": "MIT",
     "keywords": [
@@ -14,7 +14,8 @@
         "ruby on rails",
         "migrations",
         "documentation",
-        "stimulus"
+        "stimulus",
+        "solargraph"
     ],
     "repository": "https://github.com/tommasongr/nova-rails",
     "homepage": "https://tommasonegri.com/?ref=nova-rails",
@@ -26,7 +27,8 @@
         "completions",
         "sidebars",
         "tasks",
-        "formatters"
+        "formatters",
+        "languages"
     ],
     "entitlements": {
         "filesystem": "readwrite",

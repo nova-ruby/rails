@@ -4,9 +4,13 @@
 
 This extension is still in Alpha and various features will be added later on. If you have any suggestion or you have some free time you are free to contribute.
 
-## Wiki
-
 Visit the [Wiki](https://github.com/tommasongr/nova-rails/wiki) for seeing all the available commands and features.
+
+## NEW: Solargraph support 🚀
+
+Nova Rails v1.0 ships with Solargraph support and almost all its settings exposed. You can configure it globally or on a workspace base.
+
+> WARNING: Due to an oversight in previous versions you must have Solargraph v0.42.0 or above to access the settings.
 
 ## Features
 
