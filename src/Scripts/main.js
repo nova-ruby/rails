@@ -5,7 +5,7 @@ import VersionChecker from "./other/VersionChecker";
 
 import { isRailsInProject, showNotification } from "./helpers";
 
-// import RubyLanguageServer from "./other/RubyLanguageServer";
+import RubyLanguageServer from "./other/RubyLanguageServer";
 
 const versionChecker = new VersionChecker();
 versionChecker.check();
@@ -37,7 +37,7 @@ nova.assistants.registerTaskAssistant(new RailsTaskProvider(), {
 
 //********* INITIALIZATION *********//
 
-// let langserver;
+let langserver;
 
 // Initialize a new Nova Disposable object
 const compositeDisposable = new CompositeDisposable();
@@ -57,7 +57,14 @@ async function asyncActivate() {
     );
     compositeDisposable.add(railsInformationView);
 
-    // langserver = new RubyLanguageServer();
+    if (
+        nova.config.get(
+            "tommasonegri.rails.config.solargraph.enabled",
+            "boolean"
+        )
+    ) {
+        langserver = new RubyLanguageServer();
+    }
 }
 
 export function activate() {
@@ -74,10 +81,10 @@ export function activate() {
 }
 
 export function deactivate() {
-    // if (langserver) {
-    //     langserver.deactivate();
-    //     langserver = null;
-    // }
+    if (langserver) {
+        langserver.deactivate();
+        langserver = null;
+    }
 
     compositeDisposable.dispose();
 
