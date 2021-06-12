@@ -158,6 +158,141 @@
             "description": "Show a notification when the server changes status. For example on realod, stop and start. If disabled you will only be notified on crashes or errors.",
             "type": "boolean",
             "default": true
+        },
+        {
+            "title": "Solargraph",
+            "description": "Solargraph is a Ruby language server and suite of static analysis tools. The language server provides intellisense, autocompletion, diagnostics, and other language features for editors and IDEs with language client capabilities. The static analysis tools check code for type safety.",
+            "type": "section",
+            "link": "https://solargraph.org",
+            "children": [
+                {
+                    "key": "tommasonegri.rails.config.solargraph.enabled",
+                    "title": "Solargraph Enabled",
+                    "description": "Enable the solargraph language server.",
+                    "type": "boolean",
+                    "default": true
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.path",
+                    "title": "Solargraph Path",
+                    "description": "Specify the path for the solargraph server (if empty, the extension will try to figure it out).",
+                    "type": "path"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.autoformat",
+                    "title": "Autoformat",
+                    "description": "Enable automatic formatting while typing (WARNING: experimental).",
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.bundlerPath",
+                    "title": "Bundler Path",
+                    "description": "Path to the bundle executable, defaults to 'bundle'. Needs to be an absolute path for the 'bundle' exec/shim.",
+                    "type": "path",
+                    "default": "bundle"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.checkGemVersion",
+                    "title": "Check Gem Version",
+                    "description": "Automatically check if a new version of the Solargraph gem is available.",
+                    "type": "boolean",
+                    "default": true
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.commandPath",
+                    "title": "Command Path",
+                    "description": "Path to the solargraph command. Set this to an absolute path to select from multiple installed Ruby versions.",
+                    "type": "path",
+                    "default": "solargraph"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.completion",
+                    "title": "Completion",
+                    "description": "Enable completion.",
+                    "type": "boolean",
+                    "default": true
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.definitions",
+                    "title": "Definitions",
+                    "description": "Enable definitions (go to, etc.)",
+                    "type": "boolean",
+                    "default": true
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.diagnostics",
+                    "title": "Diagnostics",
+                    "description": "Enable diagnostics.",
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.folding",
+                    "title": "Folding",
+                    "description": "Enable folding ranges.",
+                    "type": "boolean",
+                    "default": true
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.formatting",
+                    "title": "Formatting",
+                    "description": "Enable document formatting.",
+                    "type": "boolean",
+                    "default": false
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.hover",
+                    "title": "Hover",
+                    "description": "Enabel hover.",
+                    "type": "boolean",
+                    "default": true
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.logLevel",
+                    "title": "Log Level",
+                    "description": "Level of debug info to log. `warn` is least and `debug` is most.",
+                    "type": "enum",
+                    "values": ["warn", "info", "debug"],
+                    "default": "warn"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.references",
+                    "title": "References",
+                    "description": "Enable finding references.",
+                    "type": "boolean",
+                    "default": true
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.rename",
+                    "title": "Rename",
+                    "description": "Enable symbol renaming.",
+                    "type": "boolean",
+                    "default": true
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.symbols",
+                    "title": "Symbols",
+                    "description": "Enable symbols.",
+                    "type": "boolean",
+                    "default": true
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.transport",
+                    "title": "Transport",
+                    "description": "The type of transport to use.",
+                    "type": "enum",
+                    "values": ["socket", "stdio"],
+                    "default": "socket"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.useBundler",
+                    "title": "Use Bundler",
+                    "description": "Use `bundle exec` to run solargraph (if this is true, the solargraph.commandPath is ignored).",
+                    "type": "boolean",
+                    "default": false
+                }
+            ]
         }
     ],
     "configWorkspace": [
@@ -176,6 +311,139 @@
             "type": "enum",
             "values": ["Global Default", "Enable", "Disable"],
             "default": "Global Default"
+        },
+        {
+            "title": "Solargraph settings",
+            "description": "Solargraph is a Ruby language server and suite of static analysis tools. The language server provides intellisense, autocompletion, diagnostics, and other language features for editors and IDEs with language client capabilities. The static analysis tools check code for type safety.",
+            "type": "section",
+            "link": "https://solargraph.org",
+            "children": [
+                {
+                    "key": "tommasonegri.rails.config.solargraph.autoformat",
+                    "title": "Autoformat",
+                    "description": "Enable automatic formatting while typing (WARNING: experimental).",
+                    "type": "enum",
+                    "values": ["Global Default", "Enable", "Disable"],
+                    "default": "Global Default"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.bundlerPath",
+                    "title": "Bundler Path",
+                    "description": "Path to the bundle executable, defaults to 'bundle'. Needs to be an absolute path for the 'bundle' exec/shim.",
+                    "type": "path",
+                    "default": ""
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.checkGemVersion",
+                    "title": "Check Gem Version",
+                    "description": "Automatically check if a new version of the Solargraph gem is available.",
+                    "type": "enum",
+                    "values": ["Global Default", "Enable", "Disable"],
+                    "default": "Global Default"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.commandPath",
+                    "title": "Command Path",
+                    "description": "Path to the solargraph command. Set this to an absolute path to select from multiple installed Ruby versions.",
+                    "type": "path",
+                    "default": ""
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.completion",
+                    "title": "Completion",
+                    "description": "Enable completion.",
+                    "type": "enum",
+                    "values": ["Global Default", "Enable", "Disable"],
+                    "default": "Global Default"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.definitions",
+                    "title": "Definitions",
+                    "description": "Enable definitions (go to, etc.)",
+                    "type": "enum",
+                    "values": ["Global Default", "Enable", "Disable"],
+                    "default": "Global Default"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.diagnostics",
+                    "title": "Diagnostics",
+                    "description": "Enable diagnostics.",
+                    "type": "enum",
+                    "values": ["Global Default", "Enable", "Disable"],
+                    "default": "Global Default"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.folding",
+                    "title": "Folding",
+                    "description": "Enable folding ranges.",
+                    "type": "enum",
+                    "values": ["Global Default", "Enable", "Disable"],
+                    "default": "Global Default"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.formatting",
+                    "title": "Formatting",
+                    "description": "Enable document formatting.",
+                    "type": "enum",
+                    "values": ["Global Default", "Enable", "Disable"],
+                    "default": "Global Default"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.hover",
+                    "title": "Hover",
+                    "description": "Include completion for module export and auto import them.",
+                    "type": "enum",
+                    "values": ["Global Default", "Enable", "Disable"],
+                    "default": "Global Default"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.logLevel",
+                    "title": "Log Level",
+                    "description": "Level of debug info to log. `warn` is least and `debug` is most.",
+                    "type": "enum",
+                    "values": ["Global Default", "warn", "info", "debug"],
+                    "default": "Global Default"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.references",
+                    "title": "References",
+                    "description": "Enable finding references.",
+                    "type": "enum",
+                    "values": ["Global Default", "Enable", "Disable"],
+                    "default": "Global Default"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.rename",
+                    "title": "Rename",
+                    "description": "Enable symbol renaming.",
+                    "type": "enum",
+                    "values": ["Global Default", "Enable", "Disable"],
+                    "default": "Global Default"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.symbols",
+                    "title": "Symbols",
+                    "description": "Enable symbols.",
+                    "type": "enum",
+                    "values": ["Global Default", "Enable", "Disable"],
+                    "default": "Global Default"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.transport",
+                    "title": "Transport",
+                    "description": "The type of transport to use.",
+                    "type": "enum",
+                    "values": ["Global Default", "socket", "stdio"],
+                    "default": "Global Default"
+                },
+                {
+                    "key": "tommasonegri.rails.config.solargraph.useBundler",
+                    "title": "Use Bundler",
+                    "description": "Use `bundle exec` to run solargraph (if this is true, the solargraph.commandPath is ignored).",
+                    "values": ["Global Default", "Enable", "Disable"],
+                    "default": "Global Default"
+                }
+            ]
         }
     ]
 }

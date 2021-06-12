@@ -1,4 +1,19 @@
+import solargraphAutoFormatSetting from "../config/solargraph/solargraphAutoFormat";
+import solargraphBundlerPathSetting from "../config/solargraph/solargraphBundlerPath";
+import solargraphCheckGemVersionSetting from "../config/solargraph/solargraphCheckGemVersion";
+import solargraphCommandPathSetting from "../config/solargraph/solargraphCommandPath";
+import solargraphCompletionSetting from "../config/solargraph/solargraphCompletion";
+import solargraphDefinitionsSetting from "../config/solargraph/solargraphDefinitions";
+import solargraphDiagnosticsSetting from "../config/solargraph/solargraphDiagnostics";
+import solargraphFoldingSetting from "../config/solargraph/solargraphFolding";
+import solargraphFormattingSetting from "../config/solargraph/solargraphFormatting";
 import solargraphHoverSetting from "../config/solargraph/solargraphHover";
+import solargraphLogLevelSetting from "../config/solargraph/solargraphLogLevel";
+import solargraphReferencesSetting from "../config/solargraph/solargraphReferences";
+import solargraphRenameSetting from "../config/solargraph/solargraphRename";
+import solargraphSymbolsSetting from "../config/solargraph/solargraphSymbols";
+import solargraphTransportSetting from "../config/solargraph/solargraphTransport";
+import solargraphUseBundlerSetting from "../config/solargraph/solargraphUseBundler";
 
 export default class RubyLanguageServer {
     constructor() {
@@ -160,13 +175,24 @@ export default class RubyLanguageServer {
             // The set of document syntaxes for which the server is valid
             syntaxes: ["ruby"],
             initializationOptions: {
+                autoFormat: solargraphAutoFormatSetting(),
+                bundlerPath: solargraphBundlerPathSetting(),
+                checkGemVersion: solargraphCheckGemVersionSetting(),
+                commandPath: solargraphCommandPathSetting(),
+                completion: solargraphCompletionSetting(),
+                definitions: solargraphDefinitionsSetting(),
+                diagnostics: solargraphDiagnosticsSetting(),
+                folding: solargraphFoldingSetting(),
+                formatting: solargraphFormattingSetting(),
+                hover: solargraphHoverSetting(),
+                logLevel: solargraphLogLevelSetting(),
+                references: solargraphReferencesSetting(),
+                rename: solargraphRenameSetting(),
+                symbols: solargraphSymbolsSetting(),
+                transport: solargraphTransportSetting(),
+                useBundler: solargraphUseBundlerSetting(),
+
                 enablePages: true,
-                hover: false,
-                completion: false,
-                logLevel: "info",
-                hover: false,
-                completion: false,
-                diagnostics: true,
             },
         };
         var client = new LanguageClient(
