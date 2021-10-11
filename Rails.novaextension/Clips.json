@@ -1,15 +1,55 @@
 {
     "clips": [
         {
-            "name": "Stimulus",
+            "name": "Stimulus (JS)",
             "children": [
                 {
-                    "content": "import { Controller } from \"stimulus\"\n\nexport default class extends Controller {\n\t${:Code}\n}",
+                    "content": "import { Controller } from \"@hotwired/stimulus\"\n\nexport default class extends Controller {\n\t${:Code}\n}",
                     "name": "Stimulus Controller",
                     "scope": "editor",
                     "syntax": "javascript",
                     "trigger": "stimulus controller"
                 },
+                {
+                    "content": "static targets = [\"${:targetName}\"]",
+                    "name": "Stimulus Targets",
+                    "scope": "editor",
+                    "syntax": "javascript",
+                    "trigger": "stimulus targets"
+                },
+                {
+                    "content": "static values = {\n\t${:valueName}: ${:Type}\n}",
+                    "name": "Stimulus Values",
+                    "scope": "editor",
+                    "syntax": "javascript",
+                    "trigger": "stimulus values"
+                },
+                {
+                    "content": "static values = {\n\t${:valueName}: {\n\t\ttype: ${:Type},\n\t\tdefault: ${:value}\n\t}\n}",
+                    "name": "Stimulus Values + Defaults",
+                    "scope": "editor",
+                    "syntax": "javascript",
+                    "trigger": "stimulus values defaults"
+                },
+                {
+                    "content": "static classes = [\"${:className}\"]",
+                    "name": "Stimulus Classes",
+                    "scope": "editor",
+                    "syntax": "javascript",
+                    "trigger": "stimulus classes"
+                },
+                {
+                    "content": "this.dispatch(\"${:eventName}\", { detail: ${:payloadObject} })",
+                    "name": "Stimulus Dispatch",
+                    "scope": "editor",
+                    "syntax": "javascript",
+                    "trigger": "stimulus dispatch"
+                }
+            ]
+        },
+        {
+            "name": "Stimulus (HTML)",
+            "children": [
                 {
                     "content": "data-controller=\"${:controller-identifier}\"",
                     "name": "Stimulus Controller",
@@ -29,7 +69,14 @@
                     "name": "Stimulus Action + Option",
                     "scope": "editor",
                     "syntax": "html",
-                    "trigger": "stimulus action + option"
+                    "trigger": "stimulus action option"
+                },
+                {
+                    "content": "data-${:controller-identifier}-${:param-name}-param=\"${:param}\"",
+                    "name": "Stimulus Param",
+                    "scope": "editor",
+                    "syntax": "html",
+                    "trigger": "stimulus param"
                 },
                 {
                     "content": "data-${:controller-identifier}-target=\"${:targetName}\"",
