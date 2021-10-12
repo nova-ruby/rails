@@ -1,4 +1,4 @@
-import statusNotificationsSetting from "./config/general/statusNotifications";
+import statusNotificationsSetting from './config/general/statusNotifications'
 
 /**
  * @param {string} id Notification ID
@@ -17,72 +17,75 @@ export function showNotification(
     handler
 ) {
     if (showAlways || statusNotificationsSetting()) {
-        let request = new NotificationRequest(id);
+        let request = new NotificationRequest(id)
 
-        request.title = title;
+        request.title = title
         if (body) {
-            request.body = body;
+            request.body = body
         }
         if (actions) {
-            request.actions = actions;
+            request.actions = actions
         }
 
         nova.notifications
             .add(request)
             .then((reply) => {
                 if (handler) {
-                    handler(reply);
+                    handler(reply)
                 }
             })
-            .catch((err) => console.error(err, err.stack));
+            .catch((err) => console.error(err, err.stack))
     }
 }
 
 export function isRailsInProject() {
-    const gemfilePath = nova.workspace.path + "/Gemfile";
+    const gemfilePath = nova.workspace.path + '/Gemfile'
 
     if (!nova.fs.access(gemfilePath, nova.fs.F_OK)) {
-        return false;
+        return false
     }
 
-    const gemfile = nova.fs.open(gemfilePath).read();
+    const gemfile = nova.fs.open(gemfilePath).read()
 
-    if (gemfile.indexOf("gem 'rails'") !== -1) {
-        return true;
+    if (
+        gemfile.indexOf("gem 'rails'") !== -1 ||
+        gemfile.indexOf('gem "rails"') !== -1
+    ) {
+        return true
     } else {
-        return false;
+        return false
     }
 }
 
 export async function aboutRails() {
     return new Promise((resolve, reject) => {
-        const process = new Process("/usr/bin/env", {
+        const process = new Process('/usr/bin/env', {
             cwd: nova.workspace.path,
-            args: ["rails", "about"],
-            stdio: ["ignore", "pipe", "ignore"],
+            args: ['rails', 'about'],
+            stdio: ['ignore', 'pipe', 'ignore'],
             shell: true,
-        });
-        let str = "";
-        let strings = [];
+        })
+        let str = ''
+        let strings = []
 
         process.onStdout((output) => {
-            str += output;
-        });
+            str += output
+        })
 
         process.onDidExit((status) => {
             // Split each line of the output in the strings array
-            strings = str.match(/[^\r\n]+/g);
+            strings = str.match(/[^\r\n]+/g)
 
             if (
                 status === 0 &&
                 strings[0] == "About your application's environment"
             ) {
-                resolve(strings);
+                resolve(strings)
             } else {
-                reject(status);
+                reject(status)
             }
-        });
+        })
 
-        process.start();
-    });
+        process.start()
+    })
 }
