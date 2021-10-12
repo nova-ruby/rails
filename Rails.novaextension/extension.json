@@ -70,6 +70,15 @@
             },
             { "separator": true },
             {
+                "title": "Routes",
+                "command": "tommasonegri.rails.commands.info.routes"
+            },
+            {
+                "title": "Project properties",
+                "command": "tommasonegri.rails.commands.info.properties"
+            },
+            { "separator": true },
+            {
                 "title": "Rails Guides",
                 "command": "tommasonegri.rails.commands.documentation.openRailsGuides"
             },
@@ -118,6 +127,10 @@
             {
                 "title": "Kill Puma Server",
                 "command": "tommasonegri.rails.commands.pumaServer.kill"
+            },
+            {
+                "title": "Update Stimulus manifest",
+                "command": "tommasonegri.rails.commands.stimulus.manifest.update"
             }
         ]
     },
