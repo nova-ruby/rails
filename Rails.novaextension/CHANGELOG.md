@@ -1,3 +1,15 @@
+## Version 2.0
+
+### FEATURES
+
+-   Added new Clips and updated existing ones to follow Stimulus v3.0.0
+-   Added new command for updating Stimulus manifest (./bin/rails stimulus:manifest:update)
+-   Added new commands for opening rails/info/routes and rails/info/properties
+
+### FIX
+
+-   Fixed an issue where isRailsProject wasn't detecting projects created with Rails 7.0
+
 ## Version 1.0
 
 ### FEATURES
