@@ -131,6 +131,14 @@
             {
                 "title": "Update Stimulus manifest",
                 "command": "tommasonegri.rails.commands.stimulus.manifest.update"
+            },
+            {
+                "title": "Pin package to importmap",
+                "command": "tommasonegri.rails.commands.importmap.pin"
+            },
+            {
+                "title": "Unpin package to importmap",
+                "command": "tommasonegri.rails.commands.importmap.unpin"
             }
         ]
     },

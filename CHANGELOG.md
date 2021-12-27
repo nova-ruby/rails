@@ -1,3 +1,9 @@
+## Version 3.0
+
+### FEATURES
+
+-   Added new commands for pinning and unpinning packages from importmap
+
 ## Version 2.0
 
 ### FEATURES

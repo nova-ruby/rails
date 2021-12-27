@@ -5,6 +5,7 @@ import RailsDocumentation from './commands/RailsDocumentation'
 import RailsServer from './commands/RailsServer'
 import RailsStimulus from './commands/RailsStimulus'
 import RailsInfo from './commands/RailsInfo'
+import RailsImportmap from './commands/RailsImportmap'
 
 export default function registerCommands() {
     nova.commands.register(
@@ -145,6 +146,22 @@ export default function registerCommands() {
         () => {
             const railsInfo = new RailsInfo()
             railsInfo.showProperties()
+        }
+    )
+
+    // Register Nova commands for pinning and unpinning packages from importmap
+    nova.commands.register(
+        'tommasonegri.rails.commands.importmap.pin',
+        () => {
+            const railsImportmap = new RailsImportmap()
+            railsImportmap.pin()
+        }
+    )
+    nova.commands.register(
+        'tommasonegri.rails.commands.importmap.unpin',
+        () => {
+            const railsImportmap = new RailsImportmap()
+            railsImportmap.unpin()
         }
     )
 }
