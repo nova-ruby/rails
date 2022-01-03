@@ -32,7 +32,7 @@ export default class RailsImportmap {
     #pin_or_unpin(packages, options) {
         const process = new Process('usr/bin/env', {
             cwd: nova.workspace.path,
-            args: ['bin/importmap', options.method, packages],
+            args: ['bin/importmap', options.method, ...packages.split(' ')],
             stdio: ['ignore', 'pipe', 'pipe'],
         })
         let str = ""

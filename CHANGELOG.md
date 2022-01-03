@@ -1,3 +1,9 @@
+## Version 3.1
+
+### FIX
+
+-   Fixed an issue with the importmaps commands and multiple packages
+
 ## Version 3.0
 
 ### FEATURES
