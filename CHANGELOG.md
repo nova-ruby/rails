@@ -5,6 +5,10 @@
 -   Added new commands for pinning and unpinning packages from importmap
 -   Added new Clips for ERB, Ruby and Rails based on *DHH Ruby* bundle for TextMate
 
+### DOCS
+
+-   Streamlined and updated the README.
+
 ## Version 2.0
 
 ### FEATURES

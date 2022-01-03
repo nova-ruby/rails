@@ -2,56 +2,44 @@
 
 # Ruby on Rails for Nova editor
 
-This extension is still in Alpha and various features will be added later on. If you have any suggestion or you have some free time you are free to contribute.
+Provides Ruby & Ruby on Rails support for Panic's Nova text editor.
 
-Visit the [Wiki](https://github.com/tommasongr/nova-rails/wiki) for seeing all the available commands and features.
+## Usage
 
-## NEW: Solargraph support 🚀
+Enable the extension in the extension library within Nova.
 
-Nova Rails v1.0 ships with Solargraph support and almost all its settings exposed. You can configure it globally or on a workspace base.
+## Features Overview
 
-> WARNING: Due to an oversight in previous versions you must have Solargraph v0.42.0 or above to access the settings.
+### Solargraph
 
-## Features
+The extension provides Solargraph support with almost all its settings exposed. You can configure it globally or on a workspace base. You must have [Solargraph](https://solargraph.org) already installed.
 
-### Rails Server Task
+> WARNING: Solargraph v0.42.0 or above is required.
 
-Automatically generate a Task for running the Rails Server command.
+### Database & Migrations
 
-### Search in various documentations
+The extension provides commands for migrating/rolling back the database, opening quickly the last migration and list all migrations within a command palette.
 
-Run the Search Documentation command for searching in different documentations online.
+### Alternate Files
 
-### Open the last migration or list them all
-
-Run the Last Migration or the List Migrations commands for streamlining those operations.
-
-### Open Alternate File
-
-Run the Open Alternate File for rapidly switching between tests and model/controller/etc files.
-
-### ERB Tag Switcher
-
-Quickly switch between `<%`, `<%=` & `<%#` with a single shortcut.
-
-Select a text to wrap it in ERB tags or just use `⌘-shift->` to create a tag and start typing the expression.
+Quickly switch between tests and model/controller/etc files.
 
 ### Stimulus Clips
 
-Start typing `Stimu...` in Javascript and HTML files for inserting Stimulus completions like Controller Scaffold, actions, classes, etc. Placeholders are formatted with the correct naming conventions.
-
-Stimulus Clips work also in Javascript and HTML derivate syntaxes like Typescript and HTML(ERB).\_
+Quickly insert Stimulus notations. To access the Clips start typing `stimul...`. You can use placeholders for referencing the correct naming conventions.
 
 ![Stimulus Clips](https://raw.githubusercontent.com/tommasongr/nova-rails/main/docs/images/stimulus-clips.png)
 
-## Features on their way
+### And much more...
 
--   Solargraph support
--   Solargrah settings exposed
--   Scaffolding Solargraph Files for better Rails Support
+ERB tag switcher, Search in various documentations, Rails Server Task, DHH Ruby Clips, About Rails Sidebar, show routes and infos, importmap pin and unpin commands, update Stimulus manifest...
 
-## Contributors
+Check out the [Wiki](https://github.com/tommasongr/nova-rails/wiki) for a complete reference.
 
-You are welcome to contribute in any way you can think of!
+## Report a Bug or Feature Request
+
+To report a bug or request a feature, please add an issue to the GitHub repository. Thanks!
+
+## Special Thanks
 
 Thanks to @devjah, @jonathanpike and @Wylan for their work on different extensions which have been integrated in this suite.
