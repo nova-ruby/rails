@@ -1,49 +1,84 @@
 {
     "clips": [
         {
-            "name": "Stimulus (JS)",
+            "name": "ERB",
             "children": [
                 {
-                    "content": "import { Controller } from \"@hotwired/stimulus\"\n\nexport default class extends Controller {\n\t${:Code}\n}",
-                    "name": "Stimulus Controller",
+                    "content": "<% $0 %>",
+                    "name": "ERB expression",
                     "scope": "editor",
-                    "syntax": "javascript",
-                    "trigger": "stimulus controller"
+                    "shortcut": "ctrl-x",
+                    "syntax": "html+erb",
+                    "trigger": "<%"
                 },
                 {
-                    "content": "static targets = [\"${:targetName}\"]",
-                    "name": "Stimulus Targets",
+                    "content": "<%= $0 %>",
+                    "name": "ERB insert",
                     "scope": "editor",
-                    "syntax": "javascript",
-                    "trigger": "stimulus targets"
+                    "shortcut": "ctrl-z",
+                    "syntax": "html+erb",
+                    "trigger": "<%="
+                },
+            ]
+        },
+        {
+            "name": "Rails",
+            "children": [
+                {
+                    "content": "module $0\n\textend ActiveSupport::Concern\n\n\t$1\nend",
+                    "name": "concern",
+                    "scope": "editor",
+                    "syntax": "ruby",
+                    "trigger": "concern"
                 },
                 {
-                    "content": "static values = {\n\t${:valueName}: ${:Type}\n}",
-                    "name": "Stimulus Values",
+                    "content": "params[:${:id}]",
+                    "name": "params",
                     "scope": "editor",
-                    "syntax": "javascript",
-                    "trigger": "stimulus values"
+                    "shortcut": "ctrl-p",
+                    "syntax": "ruby",
+                    "trigger": "params"
                 },
                 {
-                    "content": "static values = {\n\t${:valueName}: {\n\t\ttype: ${:Type},\n\t\tdefault: ${:value}\n\t}\n}",
-                    "name": "Stimulus Values + Defaults",
+                    "content": "test \"$0\" do\n\t$1\nend",
+                    "name": "test case",
                     "scope": "editor",
-                    "syntax": "javascript",
-                    "trigger": "stimulus values defaults"
+                    "syntax": "ruby",
+                    "trigger": "test"
+                }
+            ]
+        },
+        {
+            "name": "Ruby",
+            "children": [
+                {
+                    "content": "{ |${0:e}| $1 ",
+                    "name": "block",
+                    "scope": "editor",
+                    "syntax": "ruby",
+                    "trigger": "{"
                 },
                 {
-                    "content": "static classes = [\"${:className}\"]",
-                    "name": "Stimulus Classes",
+                    "content": "do\n\t$0\nend",
+                    "name": "do/end",
                     "scope": "editor",
-                    "syntax": "javascript",
-                    "trigger": "stimulus classes"
+                    "syntax": "ruby",
+                    "trigger": "do"
                 },
                 {
-                    "content": "this.dispatch(\"${:eventName}\", { detail: ${:payloadObject} })",
-                    "name": "Stimulus Dispatch",
+                    "content": "do |$0|\n\t$1\nend",
+                    "name": "do/end yield",
                     "scope": "editor",
-                    "syntax": "javascript",
-                    "trigger": "stimulus dispatch"
+                    "syntax": "ruby",
+                    "trigger": "doo"
+                },
+                {
+                    "content": "def $0\n\t$1\nend",
+                    "name": "New method",
+                    "scope": "editor",
+                    "shortcut": "command-return",
+                    "syntax": "ruby",
+                    "trigger": "def"
                 }
             ]
         },
@@ -98,6 +133,53 @@
                     "scope": "editor",
                     "syntax": "html",
                     "trigger": "stimulus class"
+                }
+            ]
+        },
+        {
+            "name": "Stimulus (JS)",
+            "children": [
+                {
+                    "content": "import { Controller } from \"@hotwired/stimulus\"\n\nexport default class extends Controller {\n\t${:Code}\n}",
+                    "name": "Stimulus Controller",
+                    "scope": "editor",
+                    "syntax": "javascript",
+                    "trigger": "stimulus controller"
+                },
+                {
+                    "content": "static targets = [\"${:targetName}\"]",
+                    "name": "Stimulus Targets",
+                    "scope": "editor",
+                    "syntax": "javascript",
+                    "trigger": "stimulus targets"
+                },
+                {
+                    "content": "static values = {\n\t${:valueName}: ${:Type}\n}",
+                    "name": "Stimulus Values",
+                    "scope": "editor",
+                    "syntax": "javascript",
+                    "trigger": "stimulus values"
+                },
+                {
+                    "content": "static values = {\n\t${:valueName}: {\n\t\ttype: ${:Type},\n\t\tdefault: ${:value}\n\t}\n}",
+                    "name": "Stimulus Values + Defaults",
+                    "scope": "editor",
+                    "syntax": "javascript",
+                    "trigger": "stimulus values defaults"
+                },
+                {
+                    "content": "static classes = [\"${:className}\"]",
+                    "name": "Stimulus Classes",
+                    "scope": "editor",
+                    "syntax": "javascript",
+                    "trigger": "stimulus classes"
+                },
+                {
+                    "content": "this.dispatch(\"${:eventName}\", { detail: ${:payloadObject} })",
+                    "name": "Stimulus Dispatch",
+                    "scope": "editor",
+                    "syntax": "javascript",
+                    "trigger": "stimulus dispatch"
                 }
             ]
         }
