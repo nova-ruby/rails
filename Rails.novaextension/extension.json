@@ -137,7 +137,7 @@
                 "command": "tommasonegri.rails.commands.importmap.pin"
             },
             {
-                "title": "Unpin package to importmap",
+                "title": "Unpin package from importmap",
                 "command": "tommasonegri.rails.commands.importmap.unpin"
             }
         ]
