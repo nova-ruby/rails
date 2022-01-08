@@ -10,7 +10,7 @@ export default class RailsImportmap {
             label: 'Packages',
             placeholder: 'lodash local-time react@17.0.1',
             prompt: 'Pin'
-        }, packages => this.#pin_or_unpin(packages, {
+        }, packages => this.pin_or_unpin(packages, {
             method: 'pin'
         }))
     }
@@ -22,14 +22,14 @@ export default class RailsImportmap {
             label: 'Packages',
             placeholder: 'lodash local-time react@17.0.1',
             prompt: 'Unpin'
-        }, packages => this.#pin_or_unpin(packages, {
+        }, packages => this.pin_or_unpin(packages, {
             method: 'unpin'
         }))
     }
 
     // Private
 
-    #pin_or_unpin(packages, options) {
+    pin_or_unpin(packages, options) {
         const process = new Process('usr/bin/env', {
             cwd: nova.workspace.path,
             args: ['bin/importmap', options.method, ...packages.split(' ')],

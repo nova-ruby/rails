@@ -1,3 +1,9 @@
+## Version 3.2
+
+### FIX
+
+-   Remove JS private methods in classes for compatibility reasons
+
 ## Version 3.1
 
 ### FIX
