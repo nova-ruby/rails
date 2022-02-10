@@ -39,9 +39,13 @@ export function showNotification(
 }
 
 export function isRailsInProject() {
-    const gemfilePath = nova.workspace.path + '/Gemfile'
+    let gemfilePath
 
-    if (!nova.fs.access(gemfilePath, nova.fs.F_OK)) {
+    if (nova.fs.access(nova.workspace.path + '/Gemfile', nova.fs.F_OK)) {
+        gemfilePath = nova.workspace.path + '/Gemfile'
+    } else if (nova.fs.access(nova.workspace.path + '/gems.rb', nova.fs.F_OK)) {
+        gemfilePath = nova.workspace.path + '/gems.rb'
+    } else {
         return false
     }
 
