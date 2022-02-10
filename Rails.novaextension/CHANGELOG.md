@@ -1,3 +1,9 @@
+## Version 3.3
+
+### FIX
+
+-   Honor both Gemfile as well as gems.rb for Rails project detection
+
 ## Version 3.2
 
 ### FIX

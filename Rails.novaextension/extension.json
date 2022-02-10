@@ -3,7 +3,7 @@
     "name": "Ruby on Rails",
     "organization": "Tommaso Negri",
     "description": "Ruby on Rails and Ruby support for Nova editor.",
-    "version": "3.2",
+    "version": "3.3",
     "main": "main.dist.js",
     "license": "MIT",
     "keywords": [
