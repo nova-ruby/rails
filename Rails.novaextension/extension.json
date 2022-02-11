@@ -152,8 +152,22 @@
             "largeSelectedImage": "RailsSidebarLargeSelected",
             "sections": [
                 {
-                    "id": "tommasonegri.rails.sidebar.railsInfo",
-                    "name": "About Rails",
+                    "id": "tommasonegri.rails.sidebar.notes",
+                    "name": "Notes",
+                    "placeholderImage": "RailsLogo",
+                    "placeholderText": "There are no Rails Notes in the current workspace",
+                    "allowMultiple": false,
+                    "headerCommands": [
+                        {
+                            "title": "Refresh",
+                            "image": "__builtin.refresh",
+                            "command": "tommasonegri.rails.commands.sidebar.notes.reload"
+                        }
+                    ]
+                },
+                {
+                    "id": "tommasonegri.rails.sidebar.about",
+                    "name": "About",
                     "placeholderImage": "RailsLogo",
                     "placeholderText": "Ruby on Rails not detected in the current workspace",
                     "headerCommands": [
