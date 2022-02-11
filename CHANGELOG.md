@@ -1,3 +1,13 @@
+## Version 4.0
+
+### FEATURES
+
+-   Added new Rails Notes sidebar
+
+### REFACTOR
+
+-   Improved code quality and style
+
 ## Version 3.3
 
 ### FIX
