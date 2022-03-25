@@ -1,6 +1,5 @@
 import registerCommands from "./commands"
 import registerSidebar from "./sidebar"
-import registerTasks from "./tasks"
 import RubyLanguageServer from "./other/RubyLanguageServer"
 import VersionChecker from "./other/VersionChecker"
 
@@ -27,7 +26,6 @@ async function asyncActivate() {
 
   registerCommands()
   registerSidebar()
-  registerTasks()
 
   if (nova.config.get("tommasonegri.rails.config.solargraph.enabled", "boolean")) {
     langserver = new RubyLanguageServer()
