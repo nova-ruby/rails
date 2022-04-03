@@ -1,3 +1,11 @@
+## Version 4.0
+
+### FEATURES
+
+-   Replace the automatically provided Rails server task with an optional Task template
+-   Added new Rails server task template (equivalent to bin/dev)
+-   Added new Bridgetown task template with Run, Build and Clean command
+
 ## Version 3.3
 
 ### FIX
