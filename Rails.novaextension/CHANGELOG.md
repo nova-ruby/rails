@@ -1,4 +1,4 @@
-## Version 4.0
+## Version 5.0
 
 ### FEATURES
 
@@ -9,6 +9,16 @@
 ### DOCS
 
 - Added a tutorial for installing and configuring Solargraph
+
+## Version 4.0
+
+### FEATURES
+
+- Added new Rails Notes sidebar
+
+### REFACTOR
+
+- Improved code quality and style
 
 ## Version 3.3
 
