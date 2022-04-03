@@ -12,9 +12,13 @@ Enable the extension in the extension library within Nova.
 
 ### Solargraph
 
-The extension provides Solargraph support with almost all its settings exposed. You can configure it globally or on a workspace base. You must have [Solargraph](https://solargraph.org) already installed.
+The extension provides Solargraph support with almost all its settings exposed. You can configure it globally or on a workspace base.
 
 > WARNING: Solargraph v0.42.0 or above is required.
+
+**Installation process:**
+- Install [Solargraph](https://solargraph.org) globally on your system with `gem install solargraph`. With version managers like *rbenv* make sure is installed for every Ruby version.
+- Follow the [tutorial](https://www.youtube.com/watch?v=mkLDPpDSWng) to set up Solargraph to work well with Rails.
 
 ### Database & Migrations
 
@@ -32,7 +36,7 @@ Quickly insert Stimulus notations. To access the Clips start typing `stimul...`.
 
 ### And much more...
 
-ERB tag switcher, Search in various documentations, Rails Server Task, DHH Ruby Clips, About Rails Sidebar, show routes and infos, importmap pin and unpin commands, update Stimulus manifest...
+ERB tag switcher, Search in various documentations, Task Templates, DHH Ruby Clips, About Rails Sidebar, show routes and infos, importmap pin and unpin commands, update Stimulus manifest...
 
 Check out the [Wiki](https://github.com/tommasongr/nova-rails/wiki) for a complete reference.
 

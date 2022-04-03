@@ -40,6 +40,199 @@
         "onWorkspaceContains:*.rb",
         "onWorkspaceContains:*.erb"
     ],
+    "taskTemplates": {
+      "railsDev": {
+        "name": "Rails Dev",
+        "description": "Runs the Rails development environment (bin/dev).",
+        "persistent": true,
+        "tasks": {
+          "run": {
+            "shell": true,
+            "command": "bin/dev"
+          }
+        }
+      },
+      "railsServer": {
+        "name": "Rails Server",
+        "description": "Runs the Rails development server.",
+        "persistent": true,
+        "tasks": {
+          "run": {
+            "shell": true,
+            "command": "bin/rails",
+            "args": [
+              "server",
+              "--environment=$(Config:railsServer.env)",
+              "--port=$(Config:railsServer.port)",
+              "--config=$(Config:railsServer.config)",
+              "--using=$(Config:railsServer.rackServer)",
+              "--pid=$(Config:railsServer.pid)",
+              "$(Config:railsServer.custom-args)"
+            ],
+            "env": {
+            }
+          }
+        },
+        "config": [
+          {
+            "key": "railsServer.env",
+            "title": "Environment",
+            "description": "Specifies the environment to run this server under",
+            "type": "enum",
+            "values": ["test", "development", "production"],
+            "default": "development",
+            "allowsCustom": true,
+            "required": true
+          },
+          {
+            "key": "railsServer.port",
+            "title": "Port",
+            "description": "Runs Rails on the specified port",
+            "type": "number",
+            "placeholder": "3000",
+            "default": 3000,
+            "min": 1,
+            "max": 65535,
+            "required": true
+          },
+          {
+            "title": "Advanced",
+            "type": "section",
+            "children": [
+              {
+                "key": "railsServer.config",
+                "title": "Config File",
+                "description": "Uses a custom rackup configuration",
+                "type": "path",
+                "default": "config.ru",
+                "required": true
+              },
+              {
+                "key": "railsServer.pid",
+                "title": "PID File",
+                "description": "Specifies the PID file",
+                "type": "path",
+                "default": "tmp/pids/server.pid",
+                "required": true
+              },
+              {
+                "key": "railsServer.rackServer",
+                "title": "Rack Server",
+                "description": "Specifies the Rack server used to run the application",
+                "type": "enum",
+                "values": ["puma", "thin", "webrick"],
+                "default": "puma",
+                "required": true
+              },
+              {
+                "key": "railsServer.custom-args",
+                "title": "Additional Arguments",
+                "description": "Custom arguments to pass to the Rails server command.",
+                "type": "string"
+              }
+            ]
+          }
+        ]
+      },
+      "bridgetown": {
+        "name": "Bridgetown",
+        "description": "Runs common Bridgetown commands.",
+        "persistent": true,
+        "tasks": {
+          "build": {
+            "shell": true,
+            "command": "bin/bridgetown",
+            "args": [
+              "build",
+              "--source=$(Config:bridgetown.source-dir)",
+              "--destination=$(Config:bridgetown.destination-dir)",
+              "--plugins=$(Config:bridgetown.plugins-dir)",
+              "--layouts=$(Config:bridgetown.layouts-dir)",
+              "--environment=$(Config:bridgetown.env)",
+              "$(Config:bridgetown.custom-args)"
+            ]
+          },
+          "run": {
+            "shell": true,
+            "command": "bin/bridgetown",
+            "args": [
+              "start",
+              "--source=$(Config:bridgetown.source-dir)",
+              "--destination=$(Config:bridgetown.destination-dir)",
+              "--plugins=$(Config:bridgetown.plugins-dir)",
+              "--layouts=$(Config:bridgetown.layouts-dir)",
+              "--environment=$(Config:bridgetown.env)",
+              "$(Config:bridgetown.custom-args)"
+            ]
+          },
+          "clean": {
+            "shell": true,
+            "command": "bin/bridgetown",
+            "args": [
+              "clean"
+            ]
+          }
+        },
+        "config": [
+          {
+            "key": "bridgetown.env",
+            "title": "Environment",
+            "description": "Specifies the environment to run this server under",
+            "type": "enum",
+            "values": ["development", "test", "production"],
+            "default": "development",
+            "allowsCustom": true,
+            "required": true
+          },
+          {
+            "title": "Directories",
+            "type": "section",
+            "children": [
+              {
+                "key": "bridgetown.source-dir",
+                "title": "Source",
+                "type": "path",
+                "default": "src",
+                "required": true
+              },
+              {
+                "key": "bridgetown.destination-dir",
+                "title": "Destination",
+                "type": "path",
+                "default": "output",
+                "required": true
+              },
+              {
+                "key": "bridgetown.plugins-dir",
+                "title": "Plugins",
+                "type": "path",
+                "default": "plugins",
+                "required": true
+              },
+              {
+                "key": "bridgetown.layouts-dir",
+                "title": "Layouts",
+                "type": "path",
+                "default": "tmp/pids/server.pid",
+                "required": true
+              }
+            ]
+          },
+          {
+            "title": "Advanced",
+            "type": "section",
+            "children": [
+              {
+                "key": "bridgetown.custom-args",
+                "title": "Additional Arguments",
+                "description": "Custom arguments to pass to the Bridgetown command",
+                "type": "string"
+              }
+            ]
+          }
+        ]
+      },
+    },
     "commands": {
         "extensions": [
             {
@@ -182,13 +375,6 @@
         }
     ],
     "config": [
-        {
-            "key": "tommasonegri.rails.config.general.task.railsServerProvider",
-            "title": "Provide Task for Rails Server",
-            "description": "Generate a Task for starting the Rails Server.",
-            "type": "boolean",
-            "default": true
-        },
         {
             "key": "tommasonegri.rails.config.general.statusNotifications",
             "title": "Status Notifications",
@@ -333,14 +519,6 @@
         }
     ],
     "configWorkspace": [
-        {
-            "key": "tommasonegri.rails.config.general.task.railsServerProvider",
-            "title": "Provide Task for Rails Server",
-            "description": "Generate a Task for starting the Rails Server.",
-            "type": "enum",
-            "values": ["Global Default", "Enable", "Disable"],
-            "default": "Global Default"
-        },
         {
             "key": "tommasonegri.rails.config.general.statusNotifications",
             "title": "Status Notifications",
