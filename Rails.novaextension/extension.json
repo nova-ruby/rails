@@ -109,7 +109,7 @@
               },
               {
                 "key": "railsServer.pid",
-                "title": "Config File",
+                "title": "PID File",
                 "description": "Specifies the PID file",
                 "type": "path",
                 "default": "tmp/pids/server.pid",
