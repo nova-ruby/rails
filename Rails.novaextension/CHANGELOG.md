@@ -1,3 +1,9 @@
+## Version 5.1
+
+### FIX
+
+- Fixed an issue with Rails Notes regex pattern
+
 ## Version 5.0
 
 ### FEATURES
