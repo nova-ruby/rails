@@ -65,17 +65,26 @@ export async function aboutRails() {
     const process = new Process('/usr/bin/env', {
       cwd: nova.workspace.path,
       args: ['rails', 'about'],
-      stdio: ['ignore', 'pipe', 'ignore'],
+      stdio: ['ignore', 'pipe', 'pipe'],
       shell: true,
     })
     let str = ''
+    let err = ''
     let strings = []
 
     process.onStdout((output) => {
       str += output
     })
 
+    process.onStderr((error_output) => {
+      err += error_output
+    })
+
     process.onDidExit((status) => {
+      if (status == 1 && str.length == 0) {
+        return reject(err)
+      }
+
       // Split each line of the output in the strings array
       strings = str.match(/[^\r\n]+/g)
 
@@ -97,17 +106,26 @@ export async function railsNotes() {
     const process = new Process('/usr/bin/env', {
       cwd: nova.workspace.path,
       args: ['rails', 'notes'],
-      stdio: ['ignore', 'pipe', 'ignore'],
+      stdio: ['ignore', 'pipe', 'pipe'],
       shell: true,
     })
     let str = ''
+    let err = ''
     let strings = []
 
     process.onStdout((output) => {
       str += output
     })
 
+    process.onStderr((error_output) => {
+      err += error_output
+    })
+
     process.onDidExit((status) => {
+      if (status == 1 && str.length == 0) {
+        return reject(err)
+      }
+
       const notes = []
       // Split each line of the output in the strings array
       strings = str.match(/[^\r\n]+/g)
