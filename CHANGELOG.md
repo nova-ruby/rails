@@ -1,3 +1,9 @@
+## Version 5.2
+
+### FIX
+
+- When rails notes/about fails to run, save the error output and return it in the Extension error logs
+
 ## Version 5.1
 
 ### FIX
