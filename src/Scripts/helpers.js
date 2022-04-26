@@ -81,9 +81,8 @@ export async function aboutRails() {
     })
 
     process.onDidExit((status) => {
-      if (status == 1 && str.length == 0) {
-        return reject(err)
-      }
+      if (status == 1){ return reject(err) }
+      if (str.length == 0) { return reject("rails about is empty") }
 
       // Split each line of the output in the strings array
       strings = str.match(/[^\r\n]+/g)
@@ -122,9 +121,8 @@ export async function railsNotes() {
     })
 
     process.onDidExit((status) => {
-      if (status == 1 && str.length == 0) {
-        return reject(err)
-      }
+      if (status == 1){ return reject(err) }
+      if (str.length == 0) { return reject("rails notes is empty") }
 
       const notes = []
       // Split each line of the output in the strings array
