@@ -1,7 +1,8 @@
-import { showNotification } from "../helpers"
+const { showNotification } = require("../helpers")
 
-export default class RailsStimulus {
+exports.RailsStimulus = class RailsStimulus {
   updateManifest() {
+    // TODO: Handle case when importmaps or other system are used
     if (!nova.workspace.railsDetected) {
       console.error("Something went wrong with the update Stimulus manifest command")
 

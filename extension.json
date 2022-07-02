@@ -4,7 +4,7 @@
     "organization": "Tommaso Negri",
     "description": "Ruby on Rails and Ruby support for Nova editor.",
     "version": "5.2",
-    "main": "main.dist.js",
+    "main": "main.js",
     "license": "MIT",
     "keywords": [
         "ruby",
@@ -66,11 +66,8 @@
               "--port=$(Config:railsServer.port)",
               "--config=$(Config:railsServer.config)",
               "--using=$(Config:railsServer.rackServer)",
-              "--pid=$(Config:railsServer.pid)",
-              "$(Config:railsServer.custom-args)"
-            ],
-            "env": {
-            }
+              "--pid=$(Config:railsServer.pid)"
+            ]
           }
         },
         "config": [
@@ -123,12 +120,6 @@
                 "values": ["puma", "thin", "webrick"],
                 "default": "puma",
                 "required": true
-              },
-              {
-                "key": "railsServer.custom-args",
-                "title": "Additional Arguments",
-                "description": "Custom arguments to pass to the Rails server command.",
-                "type": "string"
               }
             ]
           }
@@ -161,8 +152,7 @@
               "--destination=$(Config:bridgetown.destination-dir)",
               "--plugins=$(Config:bridgetown.plugins-dir)",
               "--layouts=$(Config:bridgetown.layouts-dir)",
-              "--environment=$(Config:bridgetown.env)",
-              "$(Config:bridgetown.custom-args)"
+              "--environment=$(Config:bridgetown.env)"
             ]
           },
           "clean": {
@@ -215,18 +205,6 @@
                 "type": "path",
                 "default": "tmp/pids/server.pid",
                 "required": true
-              }
-            ]
-          },
-          {
-            "title": "Advanced",
-            "type": "section",
-            "children": [
-              {
-                "key": "bridgetown.custom-args",
-                "title": "Additional Arguments",
-                "description": "Custom arguments to pass to the Bridgetown command",
-                "type": "string"
               }
             ]
           }
@@ -316,6 +294,10 @@
             {
                 "title": "Reload About Rails Sidebar",
                 "command": "tommasonegri.rails.commands.sidebar.aboutRails.reload"
+            },
+            {
+                "title": "Reload Rails Notes Sidebar",
+                "command": "tommasonegri.rails.commands.sidebar.notes.reload"
             },
             {
                 "title": "Kill Puma Server",

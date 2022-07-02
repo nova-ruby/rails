@@ -1,5 +1,6 @@
-export default class RailsAlternateFile {
+exports.RailsAlternateFile = class RailsAlternateFile {
   constructor() {
+    // FIXME: Handle running the command while something else than a file is active (like a terminal)
     this.currentPath = nova.workspace.activeTextEditor.document.path
     this.splitPath = nova.path.split(this.currentPath)
   }

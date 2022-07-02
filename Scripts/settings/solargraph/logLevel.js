@@ -26,7 +26,7 @@ function getWorkspaceSetting() {
   }
 }
 
-export default function solargraphLogLevelSetting() {
+exports.logLevel = function() {
   const workspaceConfig = getWorkspaceSetting()
   const extensionConfig = getExtensionSetting()
 

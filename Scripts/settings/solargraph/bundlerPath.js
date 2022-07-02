@@ -20,7 +20,7 @@ function getWorkspaceSetting() {
   }
 }
 
-export default function solargraphBundlerPathSetting() {
+exports.bundlerPath = function() {
   const workspaceConfig = getWorkspaceSetting()
   const extensionConfig = getExtensionSetting()
 

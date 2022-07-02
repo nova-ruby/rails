@@ -1,6 +1,6 @@
-import { showNotification } from "../helpers"
+const { showNotification } = require("../helpers")
 
-export default class RailsMigrations {
+exports.RailsMigrations = class RailsMigrations {
   openLatestMigration() {
     this.maybeShowMigrations((migrations) => {
       const migration = migrations[0]

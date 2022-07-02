@@ -2,15 +2,15 @@ function reload() {
   nova.commands.invoke("tommasonegri.rails.commands.reload")
 }
 
-nova.config.onDidChange("tommasonegri.rails.config.solargraph.autoformat", reload)
-nova.workspace.config.onDidChange("tommasonegri.rails.config.solargraph.autoformat", reload)
+nova.config.onDidChange("tommasonegri.rails.config.solargraph.checkGemVersion", reload)
+nova.workspace.config.onDidChange("tommasonegri.rails.config.solargraph.checkGemVersion", reload)
 
 function getExtensionSetting() {
-  return nova.config.get("tommasonegri.rails.config.solargraph.autoformat", "boolean")
+  return nova.config.get("tommasonegri.rails.config.solargraph.checkGemVersion", "boolean")
 }
 
 function getWorkspaceSetting() {
-  const str = nova.workspace.config.get("tommasonegri.rails.config.solargraph.autoformat", "string")
+  const str = nova.workspace.config.get("tommasonegri.rails.config.solargraph.checkGemVersion", "string")
 
   switch (str) {
     case "Global Default":
@@ -24,7 +24,7 @@ function getWorkspaceSetting() {
   }
 }
 
-export default function solargraphAutoFormatSetting() {
+exports.checkGemVersion = function() {
   const workspaceConfig = getWorkspaceSetting()
   const extensionConfig = getExtensionSetting()
 

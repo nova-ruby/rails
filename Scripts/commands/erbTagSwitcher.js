@@ -1,4 +1,4 @@
-export async function erbTagSwitcher(editor) {
+exports.erbTagSwitcher = async function(editor) {
   if (nova.inDevMode()) {
     console.log("———— ERB TAG SWITCHER ————")
   }

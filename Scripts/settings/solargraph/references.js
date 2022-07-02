@@ -2,15 +2,15 @@ function reload() {
   nova.commands.invoke("tommasonegri.rails.commands.reload")
 }
 
-nova.config.onDidChange("tommasonegri.rails.config.solargraph.completion", reload)
-nova.workspace.config.onDidChange("tommasonegri.rails.config.solargraph.completion", reload)
+nova.config.onDidChange("tommasonegri.rails.config.solargraph.references", reload)
+nova.workspace.config.onDidChange("tommasonegri.rails.config.solargraph.references", reload)
 
 function getExtensionSetting() {
-  return nova.config.get("tommasonegri.rails.config.solargraph.completion", "boolean")
+  return nova.config.get("tommasonegri.rails.config.solargraph.references", "boolean")
 }
 
 function getWorkspaceSetting() {
-  const str = nova.workspace.config.get("tommasonegri.rails.config.solargraph.completion", "string")
+  const str = nova.workspace.config.get("tommasonegri.rails.config.solargraph.references", "string")
 
   switch (str) {
     case "Global Default":
@@ -24,7 +24,7 @@ function getWorkspaceSetting() {
   }
 }
 
-export default function solargraphCompletionSetting() {
+exports.references = function() {
   const workspaceConfig = getWorkspaceSetting()
   const extensionConfig = getExtensionSetting()
 

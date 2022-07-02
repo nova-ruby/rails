@@ -2,15 +2,15 @@ function reload() {
   nova.commands.invoke("tommasonegri.rails.commands.reload")
 }
 
-nova.config.onDidChange("tommasonegri.rails.config.general.statusNotifications", reload)
-nova.workspace.config.onDidChange("tommasonegri.rails.config.general.statusNotifications", reload)
+nova.config.onDidChange("tommasonegri.rails.config.solargraph.useBundler", reload)
+nova.workspace.config.onDidChange("tommasonegri.rails.config.solargraph.useBundler", reload)
 
 function getExtensionSetting() {
-  return nova.config.get("tommasonegri.rails.config.general.statusNotifications", "boolean")
+  return nova.config.get("tommasonegri.rails.config.solargraph.useBundler", "boolean")
 }
 
 function getWorkspaceSetting() {
-  const str = nova.workspace.config.get("tommasonegri.rails.config.general.statusNotifications", "string")
+  const str = nova.workspace.config.get("tommasonegri.rails.config.solargraph.useBundler", "string")
 
   switch (str) {
     case "Global Default":
@@ -24,7 +24,7 @@ function getWorkspaceSetting() {
   }
 }
 
-export default function statusNotificationsSetting() {
+exports.useBundler = function() {
   const workspaceConfig = getWorkspaceSetting()
   const extensionConfig = getExtensionSetting()
 

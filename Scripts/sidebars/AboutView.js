@@ -1,6 +1,6 @@
-import { aboutRails } from "../helpers"
+const { aboutRails } = require("../helpers")
 
-export default class AboutView {
+exports.AboutView = class AboutView {
   constructor() {
     this.tree = new TreeView("tommasonegri.rails.sidebar.about", {
       dataProvider: this
@@ -57,6 +57,10 @@ export default class AboutView {
     })
   }
 
+  deactivate() {
+    this.dispose()
+  }
+
   reload() {
     this.tree.reload()
   }
@@ -94,35 +98,35 @@ export default class AboutView {
     return item
   }
 
-  fetchAbout() {
-    aboutRails()
-      .then(response => {
-        if (!nova.workspace.railsDetected) return
+  async fetchAbout() {
+    try {
+      const about = await aboutRails()
 
-        this.isRailsDetected = true
+      if (!nova.workspace.railsDetected) return
 
-        const railsVersion          = response[1].split(" ").pop()
-        const rubyVersion           = response[2].slice(12).trim()
-        const rubyGemsVersion       = response[3].split(" ").pop()
-        const rackVersion           = response[4].split(" ").pop()
-        const applicationRoot       = response[6].split(" ").pop()
-        const environment           = response[7].split(" ").pop()
-        const databaseAdapter       = response[8].split(" ").pop()
-        const databaseSchemaVersion = response[9].split(" ").pop()
+      this.isRailsDetected = true
 
-        this._railsVersionElement.value          = railsVersion
-        this._rubyVersionElement.value           = rubyVersion
-        this._rubyGemsVersionElement.value       = rubyGemsVersion
-        this._rackVersionElement.value           = rackVersion
-        this._applicationRootElement.value       = applicationRoot
-        this._environmentElement.value           = environment
-        this._databaseAdapterElement.value       = databaseAdapter
-        this._databaseSchemaVersionElement.value = databaseSchemaVersion
+      const railsVersion          = about[1]?.split(" ")?.pop()
+      const rubyVersion           = about[2]?.slice(12)?.trim()
+      const rubyGemsVersion       = about[3]?.split(" ")?.pop()
+      const rackVersion           = about[4]?.split(" ")?.pop()
+      const applicationRoot       = about[6]?.split(" ")?.pop()
+      const environment           = about[7]?.split(" ")?.pop()
+      const databaseAdapter       = about[8]?.split(" ")?.pop()
+      const databaseSchemaVersion = about[9]?.split(" ")?.pop()
 
-        this.reload()
-      })
-      .catch(err => {
-        console.error(err)
-      })
+      this._railsVersionElement.value          = railsVersion
+      this._rubyVersionElement.value           = rubyVersion
+      this._rubyGemsVersionElement.value       = rubyGemsVersion
+      this._rackVersionElement.value           = rackVersion
+      this._applicationRootElement.value       = applicationRoot
+      this._environmentElement.value           = environment
+      this._databaseAdapterElement.value       = databaseAdapter
+      this._databaseSchemaVersionElement.value = databaseSchemaVersion
+
+      this.reload()
+    } catch (err) {
+      console.error("Something went wrong trying to fetch Rails About:", err)
+    }
   }
 }

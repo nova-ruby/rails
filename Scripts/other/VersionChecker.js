@@ -1,6 +1,6 @@
-import { showNotification } from "../helpers"
+const { showNotification } = require("../helpers")
 
-export default class VersionChecker {
+exports.VersionChecker = class VersionChecker {
   constructor() {
     if (nova.inDevMode()) {
       console.log("————— VERSION CHECKER —————")

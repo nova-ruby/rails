@@ -2,15 +2,15 @@ function reload() {
   nova.commands.invoke("tommasonegri.rails.commands.reload")
 }
 
-nova.config.onDidChange("tommasonegri.rails.config.solargraph.formatting", reload)
-nova.workspace.config.onDidChange("tommasonegri.rails.config.solargraph.formatting", reload)
+nova.config.onDidChange("tommasonegri.rails.config.solargraph.diagnostics", reload)
+nova.workspace.config.onDidChange("tommasonegri.rails.config.solargraph.diagnostics", reload)
 
 function getExtensionSetting() {
-  return nova.config.get("tommasonegri.rails.config.solargraph.formatting", "boolean")
+  return nova.config.get("tommasonegri.rails.config.solargraph.diagnostics", "boolean")
 }
 
 function getWorkspaceSetting() {
-  const str = nova.workspace.config.get("tommasonegri.rails.config.solargraph.formatting", "string")
+  const str = nova.workspace.config.get("tommasonegri.rails.config.solargraph.diagnostics", "string")
 
   switch (str) {
     case "Global Default":
@@ -24,7 +24,7 @@ function getWorkspaceSetting() {
   }
 }
 
-export default function solargraphFormattingSetting() {
+exports.diagnostics = function() {
   const workspaceConfig = getWorkspaceSetting()
   const extensionConfig = getExtensionSetting()
 

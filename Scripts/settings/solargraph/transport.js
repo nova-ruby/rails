@@ -24,7 +24,7 @@ function getWorkspaceSetting() {
   }
 }
 
-export default function solargraphTransportSetting() {
+exports.transport = function() {
   const workspaceConfig = getWorkspaceSetting()
   const extensionConfig = getExtensionSetting()
 

@@ -20,7 +20,7 @@ function getWorkspaceSetting() {
   }
 }
 
-export default function solargraphCommandPathSetting() {
+exports.commandPath = function() {
   const workspaceConfig = getWorkspaceSetting()
   const extensionConfig = getExtensionSetting()
 

@@ -1,4 +1,4 @@
-export default class RailsDocumentation {
+exports.RailsDocumentation = class RailsDocumentation {
   constructor() {
     this.availableDocs = {
       railsAPI: "Rails API",

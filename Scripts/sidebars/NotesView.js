@@ -1,6 +1,6 @@
-import { railsNotes } from "../helpers"
+const { railsNotes } = require("../helpers")
 
-export default class NotesView {
+exports.NotesView = class NotesView {
   constructor() {
     this.tree = new TreeView("tommasonegri.rails.sidebar.notes", {
       dataProvider: this
@@ -13,6 +13,10 @@ export default class NotesView {
     this.getTreeItem = this.getTreeItem.bind(this)
 
     this.registerCommands()
+  }
+
+  deactivate() {
+    this.dispose()
   }
 
   reload() {
@@ -57,38 +61,38 @@ export default class NotesView {
     return item
   }
 
-  fetchNotes() {
+  async fetchNotes() {
     const rootItems = []
 
-    railsNotes()
-      .then(response => {
-        response.forEach(notesGroup => {
-          const element = new NotesItem(notesGroup.filename)
+    try {
+      const notes = await railsNotes()
 
-          element.collapsibleState = TreeItemCollapsibleState.Expanded
-          element.descriptiveText  = `(${notesGroup.notes.length})`
-          element.path             = notesGroup.path
-          element.tooltip          = notesGroup.path
+      notes.forEach(notesGroup => {
+        const element = new NotesItem(notesGroup.filename)
 
-          notesGroup.notes.forEach(note => {
-            const n = new NotesItem(note.annotation)
+        element.collapsibleState = TreeItemCollapsibleState.Expanded
+        element.descriptiveText  = `(${notesGroup.notes.length})`
+        element.path             = notesGroup.path
+        element.tooltip          = notesGroup.path
 
-            n.descriptiveText = note.comment
-            n.line            = note.line
+        notesGroup.notes.forEach(note => {
+          const n = new NotesItem(note.annotation)
 
-            element.addChild(n)
-          })
+          n.descriptiveText = note.comment
+          n.line            = note.line
 
-          rootItems.push(element)
+          element.addChild(n)
         })
 
-        this.rootItems = rootItems
+        rootItems.push(element)
+      })
 
-        this.reload()
-      })
-      .catch(err => {
-        console.error(err)
-      })
+      this.rootItems = rootItems
+
+      this.reload()
+    } catch (err) {
+      console.error("Something went wrong trying to fetch Rails Notes:", err)
+    }
   }
 
   registerCommands() {

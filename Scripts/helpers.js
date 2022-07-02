@@ -1,4 +1,4 @@
-import statusNotificationsSetting from "./config/general/statusNotifications"
+const SETTINGS = require("./settings")
 
 /**
  * @param {string} id Notification ID
@@ -8,24 +8,13 @@ import statusNotificationsSetting from "./config/general/statusNotifications"
  * @param {[string]=} actions Notification Action
  * @param {function(any)=} handler Notification Handler
  */
-export function showNotification(
-  id,
-  title,
-  showAlways,
-  body,
-  actions,
-  handler
-) {
-  if (showAlways || statusNotificationsSetting()) {
+exports.showNotification = function(id, title, showAlways, body, actions, handler) {
+  if (showAlways || SETTINGS.statusNotifications()) {
     let request = new NotificationRequest(id)
 
     request.title = title
-    if (body) {
-      request.body = body
-    }
-    if (actions) {
-      request.actions = actions
-    }
+    if (body) request.body = body
+    if (actions) request.actions = actions
 
     nova.notifications
       .add(request)
@@ -38,7 +27,7 @@ export function showNotification(
   }
 }
 
-export function isRailsInProject() {
+exports.isRailsInProject = function() {
   let gemfilePath
 
   if (nova.fs.access(nova.workspace.path + '/Gemfile', nova.fs.F_OK)) {
@@ -58,7 +47,7 @@ export function isRailsInProject() {
   }
 }
 
-export async function aboutRails() {
+exports.aboutRails = async function() {
   if (!nova.workspace.railsDetected) return []
 
   return new Promise((resolve, reject) => {
@@ -98,7 +87,7 @@ export async function aboutRails() {
   })
 }
 
-export async function railsNotes() {
+exports.railsNotes = async function() {
   if (!nova.workspace.railsDetected) return []
 
   return new Promise((resolve, reject) => {
