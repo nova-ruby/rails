@@ -140,8 +140,7 @@
             "--destination=$(Config:bridgetown.destination-dir)",
             "--plugins=$(Config:bridgetown.plugins-dir)",
             "--layouts=$(Config:bridgetown.layouts-dir)",
-            "--environment=$(Config:bridgetown.env)",
-            "$(Config:bridgetown.custom-args)"
+            "--environment=$(Config:bridgetown.env)"
           ]
         },
         "run": {
