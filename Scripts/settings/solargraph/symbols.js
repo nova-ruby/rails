@@ -15,9 +15,9 @@ function getWorkspaceSetting() {
   switch (str) {
     case "Global Default":
       return null
-    case "Enable":
+    case "Enabled":
       return true
-    case "Disable":
+    case "Disabled":
       return false
     default:
       return null

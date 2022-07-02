@@ -1,646 +1,733 @@
 {
-    "identifier": "com.tommasonegri.Rails",
-    "name": "Ruby on Rails",
-    "organization": "Tommaso Negri",
-    "description": "Ruby on Rails and Ruby support for Nova editor.",
-    "version": "5.2",
-    "main": "main.js",
-    "license": "MIT",
-    "keywords": [
-        "ruby",
-        "rails",
-        "nova",
-        "syntax",
-        "ruby on rails",
-        "migrations",
-        "documentation",
-        "stimulus",
-        "solargraph"
-    ],
-    "repository": "https://github.com/tommasongr/nova-rails",
-    "homepage": "https://tommasonegri.com/?ref=nova-rails",
-    "funding": "https://www.paypal.com/paypalme/tommasonegri/15EUR",
-    "bugs": "https://github.com/tommasongr/nova-rails/issues",
-    "categories": [
-        "clips",
-        "commands",
-        "completions",
-        "sidebars",
-        "tasks",
-        "formatters",
-        "languages"
-    ],
-    "entitlements": {
-        "filesystem": "readwrite",
-        "process": true
-    },
-    "activationEvents": [
-        "onLanguage:html+erb",
-        "onLanguage:ruby",
-        "onWorkspaceContains:*.rb",
-        "onWorkspaceContains:*.erb"
-    ],
-    "taskTemplates": {
-      "railsDev": {
-        "name": "Rails Dev",
-        "description": "Runs the Rails development environment (bin/dev).",
-        "persistent": true,
-        "tasks": {
-          "run": {
-            "shell": true,
-            "command": "bin/dev"
-          }
+  "identifier": "com.tommasonegri.Rails",
+  "name": "Ruby on Rails",
+  "organization": "Tommaso Negri",
+  "description": "Ruby on Rails and Ruby support for Nova editor.",
+  "version": "5.2",
+  "main": "main.js",
+  "license": "MIT",
+  "keywords": [
+    "ruby",
+    "rails",
+    "nova",
+    "syntax",
+    "ruby on rails",
+    "migrations",
+    "documentation",
+    "stimulus",
+    "solargraph"
+  ],
+  "repository": "https://github.com/tommasongr/nova-rails",
+  "homepage": "https://tommasonegri.com/?ref=nova-rails",
+  "funding": "https://www.paypal.com/paypalme/tommasonegri/15EUR",
+  "bugs": "https://github.com/tommasongr/nova-rails/issues",
+  "categories": [
+    "clips",
+    "commands",
+    "completions",
+    "sidebars",
+    "tasks",
+    "validators",
+    "formatters",
+    "languages"
+  ],
+  "entitlements": {
+    "filesystem": "readwrite",
+    "process": true
+  },
+  "activationEvents": [
+    "onLanguage:html+erb",
+    "onLanguage:ruby",
+    "onWorkspaceContains:*.rb",
+    "onWorkspaceContains:*.erb"
+  ],
+  "taskTemplates": {
+    "railsDev": {
+      "name": "Rails Dev",
+      "description": "Runs the Rails development environment (bin/dev).",
+      "persistent": true,
+      "tasks": {
+        "run": {
+          "shell": true,
+          "command": "bin/dev"
         }
-      },
-      "railsServer": {
-        "name": "Rails Server",
-        "description": "Runs the Rails development server.",
-        "persistent": true,
-        "tasks": {
-          "run": {
-            "shell": true,
-            "command": "bin/rails",
-            "args": [
-              "server",
-              "--environment=$(Config:railsServer.env)",
-              "--port=$(Config:railsServer.port)",
-              "--config=$(Config:railsServer.config)",
-              "--using=$(Config:railsServer.rackServer)",
-              "--pid=$(Config:railsServer.pid)"
-            ]
-          }
-        },
-        "config": [
-          {
-            "key": "railsServer.env",
-            "title": "Environment",
-            "description": "Specifies the environment to run this server under",
-            "type": "enum",
-            "values": ["test", "development", "production"],
-            "default": "development",
-            "allowsCustom": true,
-            "required": true
-          },
-          {
-            "key": "railsServer.port",
-            "title": "Port",
-            "description": "Runs Rails on the specified port",
-            "type": "number",
-            "placeholder": "3000",
-            "default": 3000,
-            "min": 1,
-            "max": 65535,
-            "required": true
-          },
-          {
-            "title": "Advanced",
-            "type": "section",
-            "children": [
-              {
-                "key": "railsServer.config",
-                "title": "Config File",
-                "description": "Uses a custom rackup configuration",
-                "type": "path",
-                "default": "config.ru",
-                "required": true
-              },
-              {
-                "key": "railsServer.pid",
-                "title": "PID File",
-                "description": "Specifies the PID file",
-                "type": "path",
-                "default": "tmp/pids/server.pid",
-                "required": true
-              },
-              {
-                "key": "railsServer.rackServer",
-                "title": "Rack Server",
-                "description": "Specifies the Rack server used to run the application",
-                "type": "enum",
-                "values": ["puma", "thin", "webrick"],
-                "default": "puma",
-                "required": true
-              }
-            ]
-          }
-        ]
-      },
-      "bridgetown": {
-        "name": "Bridgetown",
-        "description": "Runs common Bridgetown commands.",
-        "persistent": true,
-        "tasks": {
-          "build": {
-            "shell": true,
-            "command": "bin/bridgetown",
-            "args": [
-              "build",
-              "--source=$(Config:bridgetown.source-dir)",
-              "--destination=$(Config:bridgetown.destination-dir)",
-              "--plugins=$(Config:bridgetown.plugins-dir)",
-              "--layouts=$(Config:bridgetown.layouts-dir)",
-              "--environment=$(Config:bridgetown.env)",
-              "$(Config:bridgetown.custom-args)"
-            ]
-          },
-          "run": {
-            "shell": true,
-            "command": "bin/bridgetown",
-            "args": [
-              "start",
-              "--source=$(Config:bridgetown.source-dir)",
-              "--destination=$(Config:bridgetown.destination-dir)",
-              "--plugins=$(Config:bridgetown.plugins-dir)",
-              "--layouts=$(Config:bridgetown.layouts-dir)",
-              "--environment=$(Config:bridgetown.env)"
-            ]
-          },
-          "clean": {
-            "shell": true,
-            "command": "bin/bridgetown",
-            "args": [
-              "clean"
-            ]
-          }
-        },
-        "config": [
-          {
-            "key": "bridgetown.env",
-            "title": "Environment",
-            "description": "Specifies the environment to run this server under",
-            "type": "enum",
-            "values": ["development", "test", "production"],
-            "default": "development",
-            "allowsCustom": true,
-            "required": true
-          },
-          {
-            "title": "Directories",
-            "type": "section",
-            "children": [
-              {
-                "key": "bridgetown.source-dir",
-                "title": "Source",
-                "type": "path",
-                "default": "src",
-                "required": true
-              },
-              {
-                "key": "bridgetown.destination-dir",
-                "title": "Destination",
-                "type": "path",
-                "default": "output",
-                "required": true
-              },
-              {
-                "key": "bridgetown.plugins-dir",
-                "title": "Plugins",
-                "type": "path",
-                "default": "plugins",
-                "required": true
-              },
-              {
-                "key": "bridgetown.layouts-dir",
-                "title": "Layouts",
-                "type": "path",
-                "default": "tmp/pids/server.pid",
-                "required": true
-              }
-            ]
-          }
-        ]
       }
     },
-    "commands": {
-        "extensions": [
+    "railsServer": {
+      "name": "Rails Server",
+      "description": "Runs the Rails development server.",
+      "persistent": true,
+      "tasks": {
+        "run": {
+          "shell": true,
+          "command": "bin/rails",
+          "args": [
+            "server",
+            "--environment=$(Config:railsServer.env)",
+            "--port=$(Config:railsServer.port)",
+            "--config=$(Config:railsServer.config)",
+            "--using=$(Config:railsServer.rackServer)",
+            "--pid=$(Config:railsServer.pid)"
+          ]
+        }
+      },
+      "config": [
+        {
+          "key": "railsServer.env",
+          "title": "Environment",
+          "description": "Specifies the environment to run this server under",
+          "type": "enum",
+          "values": ["test", "development", "production"],
+          "default": "development",
+          "allowsCustom": true,
+          "required": true
+        },
+        {
+          "key": "railsServer.port",
+          "title": "Port",
+          "description": "Runs Rails on the specified port",
+          "type": "number",
+          "placeholder": "3000",
+          "default": 3000,
+          "min": 1,
+          "max": 65535,
+          "required": true
+        },
+        {
+          "title": "Advanced",
+          "type": "section",
+          "children": [
             {
-                "title": "Open Alternate File",
-                "command": "tommasonegri.rails.commands.openAlternateFile"
-            },
-            { "separator": true },
-            {
-                "title": "Open Latest Migration",
-                "command": "tommasonegri.rails.commands.migrations.openLatest"
-            },
-            {
-                "title": "List Migrations",
-                "command": "tommasonegri.rails.commands.migrations.list"
-            },
-            {
-                "title": "Migrate",
-                "command": "tommasonegri.rails.commands.migrations.migrate"
-            },
-            {
-                "title": "Rollback",
-                "command": "tommasonegri.rails.commands.migrations.rollback"
-            },
-            { "separator": true },
-            {
-                "title": "Search Documentation",
-                "command": "tommasonegri.rails.commands.documentation.search"
-            },
-            { "separator": true },
-            {
-                "title": "Routes",
-                "command": "tommasonegri.rails.commands.info.routes"
-            },
-            {
-                "title": "Project properties",
-                "command": "tommasonegri.rails.commands.info.properties"
-            },
-            { "separator": true },
-            {
-                "title": "Rails Guides",
-                "command": "tommasonegri.rails.commands.documentation.openRailsGuides"
-            },
-            {
-                "title": "Rails API",
-                "command": "tommasonegri.rails.commands.documentation.openRailsAPI"
-            },
-            {
-                "title": "Rails Forum",
-                "command": "tommasonegri.rails.commands.documentation.openRailsForum"
-            },
-            {
-                "title": "Turbo Reference",
-                "command": "tommasonegri.rails.commands.documentation.openTurboReference"
+              "key": "railsServer.config",
+              "title": "Config File",
+              "description": "Uses a custom rackup configuration",
+              "type": "path",
+              "default": "config.ru",
+              "required": true
             },
             {
-                "title": "Stimulus Reference",
-                "command": "tommasonegri.rails.commands.documentation.openStimulusReference"
+              "key": "railsServer.pid",
+              "title": "PID File",
+              "description": "Specifies the PID file",
+              "type": "path",
+              "default": "tmp/pids/server.pid",
+              "required": true
             },
-            { "separator": true },
             {
-                "title": "Extension Wiki",
-                "command": "tommasonegri.rails.commands.documentation.openExtensionWiki"
+              "key": "railsServer.rackServer",
+              "title": "Rack Server",
+              "description": "Specifies the Rack server used to run the application",
+              "type": "enum",
+              "values": ["puma", "thin", "webrick"],
+              "default": "puma",
+              "required": true
             }
-        ],
-        "editor": [
-            {
-                "title": "ERB Tag Switcher",
-                "command": "tommasonegri.rails.commands.erb.tagSwitcher",
-                "shortcut": "cmd-shift->",
-                "when": "editorHasFocus",
-                "filters": {
-                    "syntaxes": ["erb", "html+erb"]
-                }
-            }
-        ],
-        "command-palette": [
-            {
-                "title": "Reload Extension",
-                "command": "tommasonegri.rails.commands.reload"
-            },
-            {
-                "title": "Reload About Rails Sidebar",
-                "command": "tommasonegri.rails.commands.sidebar.aboutRails.reload"
-            },
-            {
-                "title": "Reload Rails Notes Sidebar",
-                "command": "tommasonegri.rails.commands.sidebar.notes.reload"
-            },
-            {
-                "title": "Kill Puma Server",
-                "command": "tommasonegri.rails.commands.pumaServer.kill"
-            },
-            {
-                "title": "Update Stimulus manifest",
-                "command": "tommasonegri.rails.commands.stimulus.manifest.update"
-            },
-            {
-                "title": "Pin package to importmap",
-                "command": "tommasonegri.rails.commands.importmap.pin"
-            },
-            {
-                "title": "Unpin package from importmap",
-                "command": "tommasonegri.rails.commands.importmap.unpin"
-            }
-        ]
+          ]
+        }
+      ]
     },
-    "sidebars": [
-        {
-            "id": "tommasonegri.rails.sidebar",
-            "name": "Rails",
-            "smallImage": "RailsSidebarSmall",
-            "smallSelectedImage": "RailsSidebarSmallSelected",
-            "largeImage": "RailsSidebarLarge",
-            "largeSelectedImage": "RailsSidebarLargeSelected",
-            "sections": [
-                {
-                    "id": "tommasonegri.rails.sidebar.notes",
-                    "name": "Notes",
-                    "placeholderImage": "RailsLogo",
-                    "placeholderText": "There are no Rails Notes in the current workspace",
-                    "allowMultiple": false,
-                    "headerCommands": [
-                        {
-                            "title": "Refresh",
-                            "image": "__builtin.refresh",
-                            "command": "tommasonegri.rails.commands.sidebar.notes.reload"
-                        }
-                    ]
-                },
-                {
-                    "id": "tommasonegri.rails.sidebar.about",
-                    "name": "About",
-                    "placeholderImage": "RailsLogo",
-                    "placeholderText": "Ruby on Rails not detected in the current workspace",
-                    "headerCommands": [
-                        {
-                            "title": "Refresh",
-                            "image": "__builtin.refresh",
-                            "command": "tommasonegri.rails.commands.sidebar.aboutRails.reload"
-                        }
-                    ]
-                }
-            ]
+    "bridgetown": {
+      "name": "Bridgetown",
+      "description": "Runs common Bridgetown commands.",
+      "persistent": true,
+      "tasks": {
+        "build": {
+          "shell": true,
+          "command": "bin/bridgetown",
+          "args": [
+            "build",
+            "--source=$(Config:bridgetown.source-dir)",
+            "--destination=$(Config:bridgetown.destination-dir)",
+            "--plugins=$(Config:bridgetown.plugins-dir)",
+            "--layouts=$(Config:bridgetown.layouts-dir)",
+            "--environment=$(Config:bridgetown.env)",
+            "$(Config:bridgetown.custom-args)"
+          ]
+        },
+        "run": {
+          "shell": true,
+          "command": "bin/bridgetown",
+          "args": [
+            "start",
+            "--source=$(Config:bridgetown.source-dir)",
+            "--destination=$(Config:bridgetown.destination-dir)",
+            "--plugins=$(Config:bridgetown.plugins-dir)",
+            "--layouts=$(Config:bridgetown.layouts-dir)",
+            "--environment=$(Config:bridgetown.env)"
+          ]
+        },
+        "clean": {
+          "shell": true,
+          "command": "bin/bridgetown",
+          "args": [
+            "clean"
+          ]
         }
-    ],
-    "config": [
+      },
+      "config": [
         {
-            "key": "tommasonegri.rails.config.general.statusNotifications",
-            "title": "Status Notifications",
-            "description": "Show a notification when the server changes status. For example on realod, stop and start. If disabled you will only be notified on crashes or errors.",
-            "type": "boolean",
-            "default": true
+          "key": "bridgetown.env",
+          "title": "Environment",
+          "description": "Specifies the environment to run this server under",
+          "type": "enum",
+          "values": ["development", "test", "production"],
+          "default": "development",
+          "allowsCustom": true,
+          "required": true
         },
         {
-            "title": "Solargraph",
-            "description": "Solargraph is a Ruby language server and suite of static analysis tools. The language server provides intellisense, autocompletion, diagnostics, and other language features for editors and IDEs with language client capabilities. The static analysis tools check code for type safety.",
-            "type": "section",
-            "link": "https://solargraph.org",
-            "children": [
-                {
-                    "key": "tommasonegri.rails.config.solargraph.enabled",
-                    "title": "Solargraph Enabled",
-                    "description": "Enable the solargraph language server.",
-                    "type": "boolean",
-                    "default": true
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.path",
-                    "title": "Solargraph Path",
-                    "description": "Specify the path for the solargraph server (if empty, the extension will try to figure it out).",
-                    "type": "path"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.autoformat",
-                    "title": "Autoformat",
-                    "description": "Enable automatic formatting while typing (WARNING: experimental).",
-                    "type": "boolean",
-                    "default": false
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.bundlerPath",
-                    "title": "Bundler Path",
-                    "description": "Path to the bundle executable, defaults to 'bundle'. Needs to be an absolute path for the 'bundle' exec/shim.",
-                    "type": "path",
-                    "default": "bundle"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.checkGemVersion",
-                    "title": "Check Gem Version",
-                    "description": "Automatically check if a new version of the Solargraph gem is available.",
-                    "type": "boolean",
-                    "default": true
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.commandPath",
-                    "title": "Command Path",
-                    "description": "Path to the solargraph command. Set this to an absolute path to select from multiple installed Ruby versions.",
-                    "type": "path",
-                    "default": "solargraph"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.completion",
-                    "title": "Completion",
-                    "description": "Enable completion.",
-                    "type": "boolean",
-                    "default": true
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.definitions",
-                    "title": "Definitions",
-                    "description": "Enable definitions (go to, etc.)",
-                    "type": "boolean",
-                    "default": true
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.diagnostics",
-                    "title": "Diagnostics",
-                    "description": "Enable diagnostics.",
-                    "type": "boolean",
-                    "default": false
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.folding",
-                    "title": "Folding",
-                    "description": "Enable folding ranges.",
-                    "type": "boolean",
-                    "default": true
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.formatting",
-                    "title": "Formatting",
-                    "description": "Enable document formatting.",
-                    "type": "boolean",
-                    "default": false
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.hover",
-                    "title": "Hover",
-                    "description": "Enabel hover.",
-                    "type": "boolean",
-                    "default": true
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.logLevel",
-                    "title": "Log Level",
-                    "description": "Level of debug info to log. `warn` is least and `debug` is most.",
-                    "type": "enum",
-                    "values": ["warn", "info", "debug"],
-                    "default": "warn"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.references",
-                    "title": "References",
-                    "description": "Enable finding references.",
-                    "type": "boolean",
-                    "default": true
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.rename",
-                    "title": "Rename",
-                    "description": "Enable symbol renaming.",
-                    "type": "boolean",
-                    "default": true
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.symbols",
-                    "title": "Symbols",
-                    "description": "Enable symbols.",
-                    "type": "boolean",
-                    "default": true
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.transport",
-                    "title": "Transport",
-                    "description": "The type of transport to use.",
-                    "type": "enum",
-                    "values": ["socket", "stdio"],
-                    "default": "socket"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.useBundler",
-                    "title": "Use Bundler",
-                    "description": "Use `bundle exec` to run solargraph (if this is true, the solargraph.commandPath is ignored).",
-                    "type": "boolean",
-                    "default": false
-                }
-            ]
+          "title": "Directories",
+          "type": "section",
+          "children": [
+            {
+              "key": "bridgetown.source-dir",
+              "title": "Source",
+              "type": "path",
+              "default": "src",
+              "required": true
+            },
+            {
+              "key": "bridgetown.destination-dir",
+              "title": "Destination",
+              "type": "path",
+              "default": "output",
+              "required": true
+            },
+            {
+              "key": "bridgetown.plugins-dir",
+              "title": "Plugins",
+              "type": "path",
+              "default": "plugins",
+              "required": true
+            },
+            {
+              "key": "bridgetown.layouts-dir",
+              "title": "Layouts",
+              "type": "path",
+              "default": "tmp/pids/server.pid",
+              "required": true
+            }
+          ]
         }
+      ]
+    }
+  },
+  "commands": {
+    "extensions": [
+      {
+        "title": "Open Alternate File",
+        "command": "tommasonegri.rails.commands.openAlternateFile"
+      },
+      { "separator": true },
+      {
+        "title": "Open Latest Migration",
+        "command": "tommasonegri.rails.commands.migrations.openLatest"
+      },
+      {
+        "title": "List Migrations",
+        "command": "tommasonegri.rails.commands.migrations.list"
+      },
+      {
+        "title": "Migrate",
+        "command": "tommasonegri.rails.commands.migrations.migrate"
+      },
+      {
+        "title": "Rollback",
+        "command": "tommasonegri.rails.commands.migrations.rollback"
+      },
+      { "separator": true },
+      {
+        "title": "Search Documentation",
+        "command": "tommasonegri.rails.commands.documentation.search"
+      },
+      { "separator": true },
+      {
+        "title": "Routes",
+        "command": "tommasonegri.rails.commands.info.routes"
+      },
+      {
+        "title": "Project properties",
+        "command": "tommasonegri.rails.commands.info.properties"
+      },
+      { "separator": true },
+      {
+        "title": "Rubocop List Offenses",
+        "command": "tommasonegri.rails.commands.rubocop.offenses.list"
+      },
+      { "separator": true },
+      {
+        "title": "Rails Guides",
+        "command": "tommasonegri.rails.commands.documentation.openRailsGuides"
+      },
+      {
+        "title": "Rails API",
+        "command": "tommasonegri.rails.commands.documentation.openRailsAPI"
+      },
+      {
+        "title": "Rails Forum",
+        "command": "tommasonegri.rails.commands.documentation.openRailsForum"
+      },
+      {
+        "title": "Turbo Reference",
+        "command": "tommasonegri.rails.commands.documentation.openTurboReference"
+      },
+      {
+        "title": "Stimulus Reference",
+        "command": "tommasonegri.rails.commands.documentation.openStimulusReference"
+      },
+      { "separator": true },
+      {
+        "title": "Extension Wiki",
+        "command": "tommasonegri.rails.commands.documentation.openExtensionWiki"
+      }
     ],
-    "configWorkspace": [
-        {
-            "key": "tommasonegri.rails.config.general.statusNotifications",
-            "title": "Status Notifications",
-            "description": "Show a notification when the server changes status. For example on realod, stop and start. If disabled you will only be notified on crashes or errors.",
-            "type": "enum",
-            "values": ["Global Default", "Enable", "Disable"],
-            "default": "Global Default"
-        },
-        {
-            "title": "Solargraph settings",
-            "description": "Solargraph is a Ruby language server and suite of static analysis tools. The language server provides intellisense, autocompletion, diagnostics, and other language features for editors and IDEs with language client capabilities. The static analysis tools check code for type safety.",
-            "type": "section",
-            "link": "https://solargraph.org",
-            "children": [
-                {
-                    "key": "tommasonegri.rails.config.solargraph.autoformat",
-                    "title": "Autoformat",
-                    "description": "Enable automatic formatting while typing (WARNING: experimental).",
-                    "type": "enum",
-                    "values": ["Global Default", "Enable", "Disable"],
-                    "default": "Global Default"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.bundlerPath",
-                    "title": "Bundler Path",
-                    "description": "Path to the bundle executable, defaults to 'bundle'. Needs to be an absolute path for the 'bundle' exec/shim.",
-                    "type": "path",
-                    "default": ""
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.checkGemVersion",
-                    "title": "Check Gem Version",
-                    "description": "Automatically check if a new version of the Solargraph gem is available.",
-                    "type": "enum",
-                    "values": ["Global Default", "Enable", "Disable"],
-                    "default": "Global Default"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.commandPath",
-                    "title": "Command Path",
-                    "description": "Path to the solargraph command. Set this to an absolute path to select from multiple installed Ruby versions.",
-                    "type": "path",
-                    "default": ""
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.completion",
-                    "title": "Completion",
-                    "description": "Enable completion.",
-                    "type": "enum",
-                    "values": ["Global Default", "Enable", "Disable"],
-                    "default": "Global Default"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.definitions",
-                    "title": "Definitions",
-                    "description": "Enable definitions (go to, etc.)",
-                    "type": "enum",
-                    "values": ["Global Default", "Enable", "Disable"],
-                    "default": "Global Default"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.diagnostics",
-                    "title": "Diagnostics",
-                    "description": "Enable diagnostics.",
-                    "type": "enum",
-                    "values": ["Global Default", "Enable", "Disable"],
-                    "default": "Global Default"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.folding",
-                    "title": "Folding",
-                    "description": "Enable folding ranges.",
-                    "type": "enum",
-                    "values": ["Global Default", "Enable", "Disable"],
-                    "default": "Global Default"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.formatting",
-                    "title": "Formatting",
-                    "description": "Enable document formatting.",
-                    "type": "enum",
-                    "values": ["Global Default", "Enable", "Disable"],
-                    "default": "Global Default"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.hover",
-                    "title": "Hover",
-                    "description": "Include completion for module export and auto import them.",
-                    "type": "enum",
-                    "values": ["Global Default", "Enable", "Disable"],
-                    "default": "Global Default"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.logLevel",
-                    "title": "Log Level",
-                    "description": "Level of debug info to log. `warn` is least and `debug` is most.",
-                    "type": "enum",
-                    "values": ["Global Default", "warn", "info", "debug"],
-                    "default": "Global Default"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.references",
-                    "title": "References",
-                    "description": "Enable finding references.",
-                    "type": "enum",
-                    "values": ["Global Default", "Enable", "Disable"],
-                    "default": "Global Default"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.rename",
-                    "title": "Rename",
-                    "description": "Enable symbol renaming.",
-                    "type": "enum",
-                    "values": ["Global Default", "Enable", "Disable"],
-                    "default": "Global Default"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.symbols",
-                    "title": "Symbols",
-                    "description": "Enable symbols.",
-                    "type": "enum",
-                    "values": ["Global Default", "Enable", "Disable"],
-                    "default": "Global Default"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.transport",
-                    "title": "Transport",
-                    "description": "The type of transport to use.",
-                    "type": "enum",
-                    "values": ["Global Default", "socket", "stdio"],
-                    "default": "Global Default"
-                },
-                {
-                    "key": "tommasonegri.rails.config.solargraph.useBundler",
-                    "title": "Use Bundler",
-                    "description": "Use `bundle exec` to run solargraph (if this is true, the solargraph.commandPath is ignored).",
-                    "values": ["Global Default", "Enable", "Disable"],
-                    "default": "Global Default"
-                }
-            ]
+    "editor": [
+      {
+        "title": "ERB Tag Switcher",
+        "command": "tommasonegri.rails.commands.erb.tagSwitcher",
+        "shortcut": "cmd-shift->",
+        "when": "editorHasFocus",
+        "filters": {
+          "syntaxes": ["erb", "html+erb"]
         }
+      },
+      { "separator": true },
+      {
+        "title": "Rubocop Fix Layout",
+        "command": "tommasonegri.rails.commands.rubocop.autocorrect.layout"
+      },
+      {
+        "title": "Rubocop Autocorrect",
+        "command": "tommasonegri.rails.commands.rubocop.autocorrect"
+      },
+      {
+        "title": "Rubocop Autocorrect (unsafe)",
+        "command": "tommasonegri.rails.commands.rubocop.autocorrect.all"
+      },
+    ],
+    "command-palette": [
+      {
+        "title": "Reload Extension",
+        "command": "tommasonegri.rails.commands.reload"
+      },
+      {
+        "title": "Reload About Rails Sidebar",
+        "command": "tommasonegri.rails.commands.sidebar.aboutRails.reload"
+      },
+      {
+        "title": "Reload Rails Notes Sidebar",
+        "command": "tommasonegri.rails.commands.sidebar.notes.reload"
+      },
+      {
+        "title": "Kill Puma Server",
+        "command": "tommasonegri.rails.commands.pumaServer.kill"
+      },
+      {
+        "title": "Update Stimulus manifest",
+        "command": "tommasonegri.rails.commands.stimulus.manifest.update"
+      },
+      {
+        "title": "Pin package to importmap",
+        "command": "tommasonegri.rails.commands.importmap.pin"
+      },
+      {
+        "title": "Unpin package from importmap",
+        "command": "tommasonegri.rails.commands.importmap.unpin"
+      }
     ]
+  },
+  "sidebars": [
+    {
+      "id": "tommasonegri.rails.sidebar",
+      "name": "Rails",
+      "smallImage": "RailsSidebarSmall",
+      "smallSelectedImage": "RailsSidebarSmallSelected",
+      "largeImage": "RailsSidebarLarge",
+      "largeSelectedImage": "RailsSidebarLargeSelected",
+      "sections": [
+        {
+          "id": "tommasonegri.rails.sidebar.notes",
+          "name": "Notes",
+          "placeholderImage": "RailsLogo",
+          "placeholderText": "There are no Rails Notes in the current workspace",
+          "allowMultiple": false,
+          "headerCommands": [
+            {
+              "title": "Refresh",
+              "image": "__builtin.refresh",
+              "command": "tommasonegri.rails.commands.sidebar.notes.reload"
+            }
+          ]
+        },
+        {
+          "id": "tommasonegri.rails.sidebar.about",
+          "name": "About",
+          "placeholderImage": "RailsLogo",
+          "placeholderText": "Ruby on Rails not detected in the current workspace",
+          "headerCommands": [
+            {
+              "title": "Refresh",
+              "image": "__builtin.refresh",
+              "command": "tommasonegri.rails.commands.sidebar.aboutRails.reload"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "config": [
+    {
+      "key": "tommasonegri.rails.config.general.statusNotifications",
+      "title": "Status Notifications",
+      "description": "Show a notification when the server changes status. For example on realod, stop and start. If disabled you will only be notified on crashes or errors.",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "title": "Solargraph",
+      "description": "Solargraph is a Ruby language server and suite of static analysis tools. The language server provides intellisense, autocompletion, diagnostics, and other language features for editors and IDEs with language client capabilities. The static analysis tools check code for type safety.",
+      "type": "section",
+      "link": "https://solargraph.org",
+      "children": [
+        {
+          "key": "tommasonegri.rails.config.solargraph.enabled",
+          "title": "Solargraph Enabled",
+          "description": "Enable the solargraph language server.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.path",
+          "title": "Solargraph Path",
+          "description": "Specify the path for the solargraph server (if empty, the extension will try to figure it out).",
+          "type": "path"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.autoformat",
+          "title": "Autoformat",
+          "description": "Enable automatic formatting while typing (WARNING: experimental).",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.bundlerPath",
+          "title": "Bundler Path",
+          "description": "Path to the bundle executable, defaults to 'bundle'. Needs to be an absolute path for the 'bundle' exec/shim.",
+          "type": "path",
+          "default": "bundle"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.checkGemVersion",
+          "title": "Check Gem Version",
+          "description": "Automatically check if a new version of the Solargraph gem is available.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.commandPath",
+          "title": "Command Path",
+          "description": "Path to the solargraph command. Set this to an absolute path to select from multiple installed Ruby versions.",
+          "type": "path",
+          "default": "solargraph"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.completion",
+          "title": "Completion",
+          "description": "Enable completion.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.definitions",
+          "title": "Definitions",
+          "description": "Enable definitions (go to, etc.)",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.diagnostics",
+          "title": "Diagnostics",
+          "description": "Enable diagnostics.",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.folding",
+          "title": "Folding",
+          "description": "Enable folding ranges.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.formatting",
+          "title": "Formatting",
+          "description": "Enable document formatting.",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.hover",
+          "title": "Hover",
+          "description": "Enabel hover.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.logLevel",
+          "title": "Log Level",
+          "description": "Level of debug info to log. `warn` is least and `debug` is most.",
+          "type": "enum",
+          "values": ["warn", "info", "debug"],
+          "radio": false,
+          "default": "warn"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.references",
+          "title": "References",
+          "description": "Enable finding references.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.rename",
+          "title": "Rename",
+          "description": "Enable symbol renaming.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.symbols",
+          "title": "Symbols",
+          "description": "Enable symbols.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.transport",
+          "title": "Transport",
+          "description": "The type of transport to use.",
+          "type": "enum",
+          "values": ["socket", "stdio"],
+          "radio": false,
+          "default": "socket"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.useBundler",
+          "title": "Use Bundler",
+          "description": "Use `bundle exec` to run solargraph (if this is true, the solargraph.commandPath is ignored).",
+          "type": "boolean",
+          "default": false
+        }
+      ]
+    },
+    {
+      "title": "RuboCop",
+      "description": "RuboCop is a Ruby code style checker (linter) and formatter based on the community-driven Ruby Style Guide. This extension offers RuboCop support only through Solargraph. They cannot be used independently.",
+      "type": "section",
+      "link": "https://rubocop.org",
+      "children": [
+        {
+          "key": "tommasonegri.rails.config.rubocop.autocorrect.onSave",
+          "title": "Auto-correct on Save",
+          "description": "Choose whether to auto-correct on save or not and at what level.",
+          "type": "enum",
+          "values": ["Layout (recommended)", "Safe Cops", "Safe & Unsafe Cops", "Disabled"],
+          "radio": false,
+          "default": "Disabled"
+        },
+        {
+          "key": "tommasonegri.rails.config.rubocop.autocorrect.disableUncorrectable",
+          "title": "Disable Uncorrectable",
+          "description": "Add a comment to disable warning on uncorrectable offenses while auto-correcting.",
+          "type": "boolean",
+          "default": false
+        },
+      ]
+    }
+  ],
+  "configWorkspace": [
+    {
+      "key": "tommasonegri.rails.config.general.statusNotifications",
+      "title": "Status Notifications",
+      "description": "Show a notification when the server changes status. For example on realod, stop and start. If disabled you will only be notified on crashes or errors.",
+      "type": "enum",
+      "values": ["Global Default", "Enabled", "Disabled"],
+      "radio": false,
+      "default": "Global Default"
+    },
+    {
+      "title": "Solargraph settings",
+      "description": "Solargraph is a Ruby language server and suite of static analysis tools. The language server provides intellisense, autocompletion, diagnostics, and other language features for editors and IDEs with language client capabilities. The static analysis tools check code for type safety.",
+      "type": "section",
+      "link": "https://solargraph.org",
+      "children": [
+        {
+          "key": "tommasonegri.rails.config.solargraph.autoformat",
+          "title": "Autoformat",
+          "description": "Enable automatic formatting while typing (WARNING: experimental).",
+          "type": "enum",
+          "values": ["Global Default", "Enabled", "Disabled"],
+          "radio": false,
+          "default": "Global Default"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.bundlerPath",
+          "title": "Bundler Path",
+          "description": "Path to the bundle executable, defaults to 'bundle'. Needs to be an absolute path for the 'bundle' exec/shim.",
+          "type": "path",
+          "default": ""
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.checkGemVersion",
+          "title": "Check Gem Version",
+          "description": "Automatically check if a new version of the Solargraph gem is available.",
+          "type": "enum",
+          "values": ["Global Default", "Enabled", "Disabled"],
+          "radio": false,
+          "default": "Global Default"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.commandPath",
+          "title": "Command Path",
+          "description": "Path to the solargraph command. Set this to an absolute path to select from multiple installed Ruby versions.",
+          "type": "path",
+          "default": ""
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.completion",
+          "title": "Completion",
+          "description": "Enable completion.",
+          "type": "enum",
+          "values": ["Global Default", "Enabled", "Disabled"],
+          "radio": false,
+          "default": "Global Default"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.definitions",
+          "title": "Definitions",
+          "description": "Enable definitions (go to, etc.)",
+          "type": "enum",
+          "values": ["Global Default", "Enabled", "Disabled"],
+          "radio": false,
+          "default": "Global Default"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.diagnostics",
+          "title": "Diagnostics",
+          "description": "Enable diagnostics.",
+          "type": "enum",
+          "values": ["Global Default", "Enabled", "Disabled"],
+          "radio": false,
+          "default": "Global Default"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.folding",
+          "title": "Folding",
+          "description": "Enable folding ranges.",
+          "type": "enum",
+          "values": ["Global Default", "Enabled", "Disabled"],
+          "radio": false,
+          "default": "Global Default"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.formatting",
+          "title": "Formatting",
+          "description": "Enable document formatting.",
+          "type": "enum",
+          "values": ["Global Default", "Enabled", "Disabled"],
+          "radio": false,
+          "default": "Global Default"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.hover",
+          "title": "Hover",
+          "description": "Include completion for module export and auto import them.",
+          "type": "enum",
+          "values": ["Global Default", "Enabled", "Disabled"],
+          "radio": false,
+          "default": "Global Default"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.logLevel",
+          "title": "Log Level",
+          "description": "Level of debug info to log. `warn` is least and `debug` is most.",
+          "type": "enum",
+          "values": ["Global Default", "warn", "info", "debug"],
+          "radio": false,
+          "default": "Global Default"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.references",
+          "title": "References",
+          "description": "Enable finding references.",
+          "type": "enum",
+          "values": ["Global Default", "Enabled", "Disabled"],
+          "radio": false,
+          "default": "Global Default"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.rename",
+          "title": "Rename",
+          "description": "Enable symbol renaming.",
+          "type": "enum",
+          "values": ["Global Default", "Enabled", "Disabled"],
+          "radio": false,
+          "default": "Global Default"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.symbols",
+          "title": "Symbols",
+          "description": "Enable symbols.",
+          "type": "enum",
+          "values": ["Global Default", "Enabled", "Disabled"],
+          "radio": false,
+          "default": "Global Default"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.transport",
+          "title": "Transport",
+          "description": "The type of transport to use.",
+          "type": "enum",
+          "values": ["Global Default", "socket", "stdio"],
+          "radio": false,
+          "default": "Global Default"
+        },
+        {
+          "key": "tommasonegri.rails.config.solargraph.useBundler",
+          "title": "Use Bundler",
+          "description": "Use `bundle exec` to run solargraph (if this is true, the solargraph.commandPath is ignored).",
+          "type": "enum",
+          "values": ["Global Default", "Enabled", "Disabled"],
+          "radio": false,
+          "default": "Global Default"
+        }
+      ]
+    },
+    {
+      "title": "RuboCop",
+      "description": "RuboCop is a Ruby code style checker (linter) and formatter based on the community-driven Ruby Style Guide. This extension offers RuboCop support only through Solargraph. They cannot be used independently.",
+      "type": "section",
+      "link": "https://rubocop.org",
+      "children": [
+        {
+          "key": "tommasonegri.rails.config.rubocop.autocorrect.onSave",
+          "title": "Auto-correct on Save",
+          "description": "Choose whether to auto-correct on save or not and at what level.",
+          "type": "enum",
+          "values": ["Global Default", "Layout (recommended)", "Safe Cops", "Safe & Unsafe Cops", "Disabled"],
+          "radio": false,
+          "default": "Global Default"
+        },
+        {
+          "key": "tommasonegri.rails.config.rubocop.autocorrect.disableUncorrectable",
+          "title": "Disable Uncorrectable",
+          "description": "Add a comment to disable warning on uncorrectable offenses while auto-correcting.",
+          "type": "enum",
+          "values": ["Global Default", "Enabled", "Disabled"],
+          "radio": false,
+          "default": "Global Default"
+        },
+      ]
+    }
+  ]
 }
