@@ -120,7 +120,7 @@ exports.railsNotes = async function() {
       strings.forEach((str, index) => {
         const possibleFilePath = str.slice(0, -1)
 
-        if (nova.path.dirname(possibleFilePath) != '') {
+        if (nova.fs.access(`${nova.workspace.path}/${possibleFilePath}`, nova.fs.F_OK)) {
           const notesGroup = {
             filename: possibleFilePath.split("/").pop(),
             path: possibleFilePath,
