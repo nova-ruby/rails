@@ -1,3 +1,19 @@
+## Version 6.0
+
+### FEAT
+
+- Improved RuboCop support with autocorrect commands, fix on save and offenses list
+
+### REFACTOR
+
+- Update extension structure to not use npm
+- Update extension icons
+
+### Fix
+
+- Resolved a parsing issue of Rails Notes with "/" in it
+- Removed an error-prone option from task templates
+
 ## Version 5.2
 
 ### FIX
