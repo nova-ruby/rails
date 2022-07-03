@@ -8,8 +8,8 @@ const { isRailsInProject, showNotification } = require("./helpers")
 const versionChecker = new VersionChecker()
 versionChecker.check()
 
-let langserver      = null
-let sidebar         = null
+let langserver = null
+let sidebar    = null
 
 exports.activate = function() {
   if (nova.inDevMode()) console.log("Hello from Ruby on Rails 🚂 (DEV mode)")
