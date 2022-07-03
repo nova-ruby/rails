@@ -305,7 +305,7 @@
       {
         "title": "Rubocop Autocorrect (unsafe)",
         "command": "tommasonegri.rails.commands.rubocop.autocorrect.all"
-      },
+      }
     ],
     "command-palette": [
       {
@@ -543,7 +543,7 @@
           "description": "Add a comment to disable warning on uncorrectable offenses while auto-correcting.",
           "type": "boolean",
           "default": false
-        },
+        }
       ]
     }
   ],
@@ -728,7 +728,7 @@
           "values": ["Global Default", "Enabled", "Disabled"],
           "radio": false,
           "default": "Global Default"
-        },
+        }
       ]
     }
   ]
