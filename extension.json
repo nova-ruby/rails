@@ -573,7 +573,7 @@
       "type": "enum",
       "values": ["Global Default", "minitest", "rspec"],
       "radio": false,
-      "default": "minitest"
+      "default": "Global Default"
     },
     {
       "title": "Solargraph settings",
