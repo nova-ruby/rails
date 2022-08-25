@@ -25,9 +25,9 @@ exports.RailsAlternateFile = class RailsAlternateFile {
     let associatedFileName
 
     if (associatedDir === testType) {
-      associatedFileName = currentFileName.slice(0, -3).concat("_test.rb")
+      associatedFileName = currentFileName.slice(0, -3).concat("_${testType}.rb")
     } else {
-      associatedFileName = currentFileName.replace("_test", "")
+      associatedFileName = currentFileName.replace("_${testType}", "")
     }
 
     let newSplitPath = this.splitPath
