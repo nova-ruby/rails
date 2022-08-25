@@ -386,6 +386,15 @@
       "default": true
     },
     {
+      "key": "tommasonegri.rails.config.general.alternateFileType",
+      "title": "Alternate File type",
+      "description": "Select whether 'Open Alternate File' should use minitest or rspec.",
+      "type": "enum",
+      "values": ["minitest", "rspec"],
+      "radio": false,
+      "default": "minitest"
+    },
+    {
       "title": "Solargraph",
       "description": "Solargraph is a Ruby language server and suite of static analysis tools. The language server provides intellisense, autocompletion, diagnostics, and other language features for editors and IDEs with language client capabilities. The static analysis tools check code for type safety.",
       "type": "section",
@@ -556,6 +565,15 @@
       "values": ["Global Default", "Enabled", "Disabled"],
       "radio": false,
       "default": "Global Default"
+    },
+    {
+      "key": "tommasonegri.rails.config.general.alternateFileType",
+      "title": "Alternate File type",
+      "description": "Select whether 'Open Alternate File' should use minitest or rspec.",
+      "type": "enum",
+      "values": ["Global Default", "minitest", "rspec"],
+      "radio": false,
+      "default": "minitest"
     },
     {
       "title": "Solargraph settings",
