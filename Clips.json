@@ -60,14 +60,14 @@
         },
         {
           "content": "do\n\t$0\nend",
-          "name": "do/end",
+          "name": "do",
           "scope": "editor",
           "syntax": "ruby",
           "trigger": "do"
         },
         {
           "content": "do |$0|\n\t$1\nend",
-          "name": "do/end yield",
+          "name": "do (yield)",
           "scope": "editor",
           "syntax": "ruby",
           "trigger": "doo"

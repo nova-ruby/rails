@@ -1,3 +1,9 @@
+## Version 6.1
+
+### FIX
+
+- Prevent "do" and "do (yield)" clips to popup when typing "end"
+
 ## Version 6.0
 
 ### FEAT
