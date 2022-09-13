@@ -3,6 +3,7 @@
 ### FIX
 
 - Prevent "do" and "do (yield)" clips to popup when typing "end"
+- Update noteParts regexp to handle Notes with empty comments by @hmaddocks
 
 ## Version 6.0
 
