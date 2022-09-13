@@ -128,7 +128,7 @@ exports.railsNotes = async function() {
           }
           notes.push(notesGroup)
         } else {
-          const noteParts = /\s{2}\*\s\[\s*(\d+)\]\s\[(.*)\]\s(.+)/.exec(str)
+          const noteParts = /\s{2}\*\s\[\s*(\d+)\]\s\[(.*)\]\s?(.*)/.exec(str)
 
           const note = {
             line: noteParts[1],
