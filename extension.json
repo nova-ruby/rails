@@ -3,7 +3,7 @@
   "name": "Ruby on Rails",
   "organization": "Tommaso Negri",
   "description": "Ruby on Rails and Ruby support for Nova editor.",
-  "version": "6.1",
+  "version": "6.2",
   "main": "main.js",
   "license": "MIT",
   "keywords": [
@@ -142,7 +142,6 @@
             "--source=$(Config:bridgetown.source-dir)",
             "--destination=$(Config:bridgetown.destination-dir)",
             "--plugins=$(Config:bridgetown.plugins-dir)",
-            "--layouts=$(Config:bridgetown.layouts-dir)",
             "--environment=$(Config:bridgetown.env)"
           ]
         },
@@ -154,7 +153,6 @@
             "--source=$(Config:bridgetown.source-dir)",
             "--destination=$(Config:bridgetown.destination-dir)",
             "--plugins=$(Config:bridgetown.plugins-dir)",
-            "--layouts=$(Config:bridgetown.layouts-dir)",
             "--environment=$(Config:bridgetown.env)"
           ]
         },
@@ -200,13 +198,6 @@
               "title": "Plugins",
               "type": "path",
               "default": "plugins",
-              "required": true
-            },
-            {
-              "key": "bridgetown.layouts-dir",
-              "title": "Layouts",
-              "type": "path",
-              "default": "tmp/pids/server.pid",
               "required": true
             }
           ]

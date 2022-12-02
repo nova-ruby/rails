@@ -1,3 +1,9 @@
+## Version 6.2
+
+### IMPROVE
+
+- Update task-bridgetown icons to avoid a resizing issue
+
 ## Version 6.1
 
 ### FIX
