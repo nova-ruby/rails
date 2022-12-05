@@ -121,6 +121,13 @@
           "trigger": "stimulus target"
         },
         {
+          "content": "data-${:controller-identifier}-${:outlet-name}-target=\"${:css-selector}\"",
+          "name": "Stimulus Outlet",
+          "scope": "editor",
+          "syntax": "html",
+          "trigger": "stimulus outlet"
+        },
+        {
           "content": "data-${:controller-identifier}-${:value-name}-value=\"${:value}\"",
           "name": "Stimulus Value",
           "scope": "editor",
@@ -152,6 +159,13 @@
           "scope": "editor",
           "syntax": "javascript",
           "trigger": "stimulus targets"
+        },
+        {
+          "content": "static outlets = [\"${:outletName}\"]",
+          "name": "Stimulus Outlets",
+          "scope": "editor",
+          "syntax": "javascript",
+          "trigger": "stimulus outlets"
         },
         {
           "content": "static values = {\n\t${:valueName}: ${:Type}\n}",
