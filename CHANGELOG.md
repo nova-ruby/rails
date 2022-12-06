@@ -1,3 +1,9 @@
+## Version 7.0
+
+### FEAT
+
+- Add StimulusJS outlets Clips
+
 ## Version 6.2
 
 ### IMPROVE
