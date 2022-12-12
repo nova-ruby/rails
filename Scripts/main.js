@@ -34,7 +34,7 @@ exports.activate = function() {
     langserver = new SolargraphLanguageServer()
   }
 
-  if (SETTINGS.rubocop.autocorrectOnSave()) {
+  if (SETTINGS.rubocop.autocorrectOnSave() != "Disabled") {
     nova.workspace.activeTextEditor.onDidSave((editor) => {
       const rubocop = new COMMANDS.Rubocop()
 
