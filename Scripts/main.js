@@ -35,20 +35,22 @@ exports.activate = function() {
   }
 
   if (SETTINGS.rubocop.autocorrectOnSave()) {
-    nova.workspace.activeTextEditor.onDidSave((editor) => {
-      const rubocop = new COMMANDS.Rubocop()
+    nova.workspace.onDidAddTextEditor((editor) => {
+      editor.onDidSave((editor) => {
+        const rubocop = new COMMANDS.Rubocop()
 
-      switch (SETTINGS.rubocop.autocorrectOnSave()) {
-        case "Layout (recommended)":
-          rubocop.autocorrectLayout(editor.document)
-          break
-        case "Safe Cops":
-          rubocop.autocorrect(editor.document)
-          break
-        case "Safe & Unsafe Cops":
-          rubocop.autocorrectAll(editor.document)
-          break
-      }
+        switch (SETTINGS.rubocop.autocorrectOnSave()) {
+          case "Layout (recommended)":
+            rubocop.autocorrectLayout(editor.document)
+            break
+          case "Safe Cops":
+            rubocop.autocorrect(editor.document)
+            break
+          case "Safe & Unsafe Cops":
+            rubocop.autocorrectAll(editor.document)
+            break
+        }
+      })
     })
   }
 }
