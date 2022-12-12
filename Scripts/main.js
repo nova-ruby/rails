@@ -8,6 +8,8 @@ const { isRailsInProject, showNotification } = require("./helpers")
 const versionChecker = new VersionChecker()
 versionChecker.check()
 
+const eventHandlers = []
+
 let langserver = null
 let sidebar    = null
 
@@ -35,8 +37,8 @@ exports.activate = function() {
   }
 
   if (SETTINGS.rubocop.autocorrectOnSave()) {
-    nova.workspace.onDidAddTextEditor((editor) => {
-      editor.onDidSave((editor) => {
+    const didAddTextEditorHandler = nova.workspace.onDidAddTextEditor((editor) => {
+      const didSaveHandler = editor.onDidSave((editor) => {
         const rubocop = new COMMANDS.Rubocop()
 
         switch (SETTINGS.rubocop.autocorrectOnSave()) {
@@ -51,7 +53,17 @@ exports.activate = function() {
             break
         }
       })
+
+      eventHandlers.push(didSaveHandler)
+
+      const didDestroyHandler = editor.onDidDestroy(() => {
+        didSaveHandler.dispose()
+      })
+
+      eventHandlers.push(didDestroyHandler)
     })
+
+    eventHandlers.push(didAddTextEditorHandler)
   }
 }
 
@@ -65,6 +77,14 @@ exports.deactivate = function() {
   if (sidebar) {
     sidebar.deactivate()
     sidebar = null
+  }
+
+  if (eventHandlers && eventHandlers.length > 0) {
+    console.log("Removing bound event handlers.")
+
+    while (handler = eventHandlers.pop()) {
+      handler.dispose()
+    }
   }
 
   console.log("Goodbye from Ruby on Rails 🚂")
