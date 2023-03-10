@@ -11,8 +11,8 @@ exports.RailsDocumentation = class RailsDocumentation {
     this.docsSearchLinks = {
       railsAPI: "https://duckduckgo.com/?t=ffab&q=site%3Aapi.rubyonrails.org+",
       railsGuides: "https://duckduckgo.com/?t=ffab&q=site%3Aguides.rubyonrails.org+",
-      turbo: "https://duckduckgo.com/?t=ffab&q=site%3Aturbo.hotwire.dev+",
-      stimulus: "https://duckduckgo.com/?t=ffab&q=site%3Astimulus.hotwire.dev+",
+      turbo: "https://duckduckgo.com/?t=ffab&q=site%3Aturbo.hotwired.dev+",
+      stimulus: "https://duckduckgo.com/?t=ffab&q=site%3Astimulus.hotwired.dev+",
       rubyDoc: "https://duckduckgo.com/?t=ffab&q=site%3Aruby-doc.org+",
     }
   }
