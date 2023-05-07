@@ -4,6 +4,11 @@
 
 - Add StimulusJS outlets Clips
 
+### FIX
+
+- Change Ruby clip shortcut with an available one
+- Use the new `hotwired.dev` domain for documentation by @gobijan in #33 and #34
+
 ## Version 6.2
 
 ### IMPROVE
