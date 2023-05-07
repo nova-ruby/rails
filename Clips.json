@@ -18,7 +18,7 @@
           "shortcut": "ctrl-z",
           "syntax": "html+erb",
           "trigger": "<%="
-        },
+        }
       ]
     },
     {
@@ -76,7 +76,7 @@
           "content": "def $0\n\t$1\nend",
           "name": "New method",
           "scope": "editor",
-          "shortcut": "command-return",
+          "shortcut": "command-option-return",
           "syntax": "ruby",
           "trigger": "def"
         }
