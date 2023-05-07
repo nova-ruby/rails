@@ -111,11 +111,11 @@ nova.commands.register('tommasonegri.rails.commands.documentation.openRailsForum
 })
 nova.commands.register('tommasonegri.rails.commands.documentation.openTurboReference', () => {
   const railsDocumentation = new COMMANDS.RailsDocumentation()
-  railsDocumentation.openDocs('https://turbo.hotwire.dev/reference/drive')
+  railsDocumentation.openDocs('https://turbo.hotwired.dev/reference/drive')
 })
 nova.commands.register('tommasonegri.rails.commands.documentation.openStimulusReference', () => {
   const railsDocumentation = new COMMANDS.RailsDocumentation()
-  railsDocumentation.openDocs('https://stimulus.hotwire.dev/reference/controllers')
+  railsDocumentation.openDocs('https://stimulus.hotwired.dev/reference/controllers')
 })
 nova.commands.register('tommasonegri.rails.commands.documentation.openExtensionWiki', () => {
     const railsDocumentation = new COMMANDS.RailsDocumentation()
