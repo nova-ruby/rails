@@ -1,5 +1,6 @@
 // EXTENSION
 const { statusNotifications }             = require("./settings/general/statusNotifications")
+const { alternateFileType }               = require("./settings/general/alternateFileType")
 // SOLARGRAPH
 const { autoFormat }                      = require("./settings/solargraph/autoFormat")
 const { bundlerPath }                     = require("./settings/solargraph/bundlerPath")
@@ -23,6 +24,7 @@ const { autocorrectDisableUncorrectable } = require("./settings/rubocop/autocorr
 
 module.exports = {
   statusNotifications,
+  alternateFileType,
   solargraph: {
     autoFormat,
     bundlerPath,
