@@ -90,7 +90,7 @@ nova.commands.register('tommasonegri.rails.commands.documentation.openStimulusRe
 })
 nova.commands.register('tommasonegri.rails.commands.documentation.openExtensionWiki', () => {
     const railsDocumentation = new COMMANDS.RailsDocumentation()
-    railsDocumentation.openDocs('https://github.com/tommasongr/nova-rails/wiki')
+    railsDocumentation.openDocs('https://github.com/nova-ruby/rails/wiki')
 })
 
 // Register a Nova command for Searching the Documentation with the Command Palette

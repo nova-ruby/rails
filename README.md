@@ -1,48 +1,29 @@
-![](https://raw.githubusercontent.com/tommasongr/nova-rails/main/Rails.novaextension/extension.png)
-
-# Ruby on Rails for Nova editor
+<p align="center">
+  <img src="https://raw.githubusercontent.com/nova-ruby/rails/main/misc/extension.png" width="80" height="80">
+</p>
+<h1 align="center">Ruby on Rails for Nova</h1>
 
 Provides Ruby & Ruby on Rails support for Panic's Nova text editor.
 
-## Usage
+## Features
 
-Enable the extension in the extension library within Nova.
+- erb tag switching
+- quick list and jump to migrations
+- jump to latest migration
+- migrate and rollback database
+- open alternate files
+- search on various documentations
+- Rails task templates
+- kill puma server (useful after crash)
+- update Stimulus manifest
+- pin and unpin from importmap
+- quick jump to Rails routes and properties pages
+- sidebar with Rails notes and info
+- clips for Ruby, Rails and erb
 
-## Features Overview
+Check out the [Wiki](https://github.com/nova-ruby/rails/wiki) for a complete reference and user guide.
 
-### Solargraph
-
-The extension provides Solargraph support with almost all its settings exposed. You can configure it globally or on a workspace base.
-
-> WARNING: Solargraph v0.42.0 or above is required.
-
-**Installation process:**
-- Install [Solargraph](https://solargraph.org) globally on your system with `gem install solargraph`. With version managers like *rbenv* make sure is installed for every Ruby version.
-- Follow the [tutorial](https://www.youtube.com/watch?v=mkLDPpDSWng) to set up Solargraph to work well with Rails.
-
-### Database & Migrations
-
-The extension provides commands for migrating/rolling back the database, opening quickly the last migration and list all migrations within a command palette.
-
-### Alternate Files
-
-Quickly switch between tests and model/controller/etc files.
-
-### Stimulus Clips
-
-Quickly insert Stimulus notations. To access the Clips start typing `stimul...`. You can use placeholders for referencing the correct naming conventions.
-
-![Stimulus Clips](https://raw.githubusercontent.com/tommasongr/nova-rails/main/docs/images/stimulus-clips.png)
-
-### And much more...
-
-ERB tag switcher, Search in various documentations, Task Templates, DHH Ruby Clips, About Rails Sidebar, show routes and infos, importmap pin and unpin commands, update Stimulus manifest...
-
-Check out the [Wiki](https://github.com/tommasongr/nova-rails/wiki) for a complete reference.
-
-## Report a Bug or Feature Request
-
-To report a bug or request a feature, please add an issue to the GitHub repository. Thanks!
+## Ecosystem
 
 ## Special Thanks
 

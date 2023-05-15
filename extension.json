@@ -16,10 +16,10 @@
     "documentation",
     "stimulus"
   ],
-  "repository": "https://github.com/tommasongr/nova-rails",
+  "repository": "https://github.com/nova-ruby/rails",
   "homepage": "https://tommasonegri.com/?ref=nova-rails",
   "funding": "https://www.paypal.com/paypalme/tommasonegri/15EUR",
-  "bugs": "https://github.com/tommasongr/nova-rails/issues",
+  "bugs": "https://github.com/nova-ruby/rails/issues",
   "categories": [
     "clips",
     "commands",
