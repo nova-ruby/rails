@@ -1,4 +1,8 @@
 class RailsRelatedFiles {
+  /**
+   * Show a choice palette with the related file paths
+   * @param {string} filePath
+   */
   run(filePath) {
     const related = new Related(filePath, this._patterns)
 

@@ -2,7 +2,13 @@
 
 ### FEAT
 
+- Add Show Related Files command
 - Add StimulusJS outlets Clips
+
+### IMPROVE
+
+- Remove Solargraph and Rubocop in favor of the new and improved [Solargraph](nova://extension/?id=com.tommasonegri.solargraph&name=Solargraph) extension
+- Remove Bridgetown template task in favor of the new and improved [Bridgetown](nova://extension/?id=com.tommasonegri.bridgetown&name=Bridgetown) extension
 
 ### FIX
 
