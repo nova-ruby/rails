@@ -48,53 +48,53 @@ function reload() {
 
 nova.commands.register("tommasonegri.rails.commands.reload", reload)
 
-nova.commands.register('tommasonegri.rails.commands.erb.tagSwitcher', async (editor) => {
+nova.commands.register("tommasonegri.rails.commands.erb.tagSwitcher", async (editor) => {
   COMMANDS.erbTagSwitcher(editor)
 })
 
-nova.commands.register('tommasonegri.rails.commands.migrations.openLatest', () => {
+nova.commands.register("tommasonegri.rails.commands.migrations.openLatest", () => {
   const railsMigrations = new COMMANDS.RailsMigrations()
   railsMigrations.openLatestMigration()
 })
 
-nova.commands.register('tommasonegri.rails.commands.migrations.list', () => {
+nova.commands.register("tommasonegri.rails.commands.migrations.list", () => {
   const railsMigrations = new COMMANDS.RailsMigrations()
   railsMigrations.listMigrations()
 })
 
-nova.commands.register('tommasonegri.rails.commands.openAlternateFile', () => {
+nova.commands.register("tommasonegri.rails.commands.openAlternateFile", () => {
   const railsAlternateFile = new COMMANDS.RailsAlternateFile()
   railsAlternateFile.alternate()
 })
 
 // Register Nova commands for opening Documentations
-nova.commands.register('tommasonegri.rails.commands.documentation.openRailsGuides', () => {
+nova.commands.register("tommasonegri.rails.commands.documentation.openRailsGuides", () => {
   const railsDocumentation = new COMMANDS.RailsDocumentation()
-  railsDocumentation.openDocs('https://guides.rubyonrails.org')
+  railsDocumentation.openDocs("https://guides.rubyonrails.org")
 })
-nova.commands.register('tommasonegri.rails.commands.documentation.openRailsAPI', () => {
+nova.commands.register("tommasonegri.rails.commands.documentation.openRailsAPI", () => {
   const railsDocumentation = new COMMANDS.RailsDocumentation()
-  railsDocumentation.openDocs('https://api.rubyonrails.org')
+  railsDocumentation.openDocs("https://api.rubyonrails.org")
 })
-nova.commands.register('tommasonegri.rails.commands.documentation.openRailsForum', () => {
+nova.commands.register("tommasonegri.rails.commands.documentation.openRailsForum", () => {
   const railsDocumentation = new COMMANDS.RailsDocumentation()
-  railsDocumentation.openDocs('https://discuss.rubyonrails.org')
+  railsDocumentation.openDocs("https://discuss.rubyonrails.org")
 })
-nova.commands.register('tommasonegri.rails.commands.documentation.openTurboReference', () => {
+nova.commands.register("tommasonegri.rails.commands.documentation.openTurboReference", () => {
   const railsDocumentation = new COMMANDS.RailsDocumentation()
-  railsDocumentation.openDocs('https://turbo.hotwired.dev/reference/drive')
+  railsDocumentation.openDocs("https://turbo.hotwired.dev/reference/drive")
 })
-nova.commands.register('tommasonegri.rails.commands.documentation.openStimulusReference', () => {
+nova.commands.register("tommasonegri.rails.commands.documentation.openStimulusReference", () => {
   const railsDocumentation = new COMMANDS.RailsDocumentation()
-  railsDocumentation.openDocs('https://stimulus.hotwired.dev/reference/controllers')
+  railsDocumentation.openDocs("https://stimulus.hotwired.dev/reference/controllers")
 })
-nova.commands.register('tommasonegri.rails.commands.documentation.openExtensionWiki', () => {
+nova.commands.register("tommasonegri.rails.commands.documentation.openExtensionWiki", () => {
     const railsDocumentation = new COMMANDS.RailsDocumentation()
-    railsDocumentation.openDocs('https://github.com/nova-ruby/rails/wiki')
+    railsDocumentation.openDocs("https://github.com/nova-ruby/rails/wiki")
 })
 
 // Register a Nova command for Searching the Documentation with the Command Palette
-nova.commands.register('tommasonegri.rails.commands.documentation.search', () => {
+nova.commands.register("tommasonegri.rails.commands.documentation.search", () => {
   const railsDocumentation = new COMMANDS.RailsDocumentation()
   railsDocumentation.searchDocs()
 })
@@ -102,51 +102,51 @@ nova.commands.register('tommasonegri.rails.commands.documentation.search', () =>
 // Register a Nova command for Killing Puma Server.
 // Useful for recovering from a not properly stopped server
 // for example after a Nova crash.
-nova.commands.register('tommasonegri.rails.commands.pumaServer.kill', () => {
+nova.commands.register("tommasonegri.rails.commands.pumaServer.kill", () => {
   const railsServer = new COMMANDS.RailsServer()
   railsServer.kill()
 })
 
 // Register a Nova command for Applying the latest Migration
-nova.commands.register('tommasonegri.rails.commands.migrations.migrate', () => {
+nova.commands.register("tommasonegri.rails.commands.migrations.migrate", () => {
   const railsMigrations = new COMMANDS.RailsMigrations()
   railsMigrations.migrate()
 })
 
 // Register a Nova command for Applying a Rollback
-nova.commands.register('tommasonegri.rails.commands.migrations.rollback', () => {
+nova.commands.register("tommasonegri.rails.commands.migrations.rollback", () => {
   const railsMigrations = new COMMANDS.RailsMigrations()
   railsMigrations.rollback()
 })
 
 // Register a Nova command for Updating Stimulus manifest
-nova.commands.register('tommasonegri.rails.commands.stimulus.manifest.update', () => {
+nova.commands.register("tommasonegri.rails.commands.stimulus.manifest.update", () => {
   const railsStimulus = new COMMANDS.RailsStimulus()
   railsStimulus.updateManifest()
 })
 
 // Register Nova commands for showing project infos
-nova.commands.register('tommasonegri.rails.commands.info.routes', () => {
+nova.commands.register("tommasonegri.rails.commands.info.routes", () => {
   const railsInfo = new COMMANDS.RailsInfo()
   railsInfo.showRoutes()
 })
-nova.commands.register('tommasonegri.rails.commands.info.properties', () => {
+nova.commands.register("tommasonegri.rails.commands.info.properties", () => {
   const railsInfo = new COMMANDS.RailsInfo()
   railsInfo.showProperties()
 })
 
 // Register Nova commands for pinning and unpinning packages from importmap
-nova.commands.register('tommasonegri.rails.commands.importmap.pin', () => {
+nova.commands.register("tommasonegri.rails.commands.importmap.pin", () => {
   const railsImportmap = new COMMANDS.RailsImportmap()
   railsImportmap.pin()
 })
-nova.commands.register('tommasonegri.rails.commands.importmap.unpin', () => {
+nova.commands.register("tommasonegri.rails.commands.importmap.unpin", () => {
   const railsImportmap = new COMMANDS.RailsImportmap()
   railsImportmap.unpin()
 })
 
 // Register Nova command for showing related files
-nova.commands.register("tommasonegri.rails.commands.showRelatedFiles", () => {
+nova.commands.register("tommasonegri.rails.commands.showRelatedFiles", (editor) => {
   const relatedFiles = new COMMANDS.RailsRelatedFiles()
-  relatedFiles.run(nova.workspace.activeTextEditor.document.path)
+  relatedFiles.run(editor.document.path)
 })
