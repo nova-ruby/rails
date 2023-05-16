@@ -1,6 +1,5 @@
 const COMMANDS                               = require("./commands")
 const SETTINGS                               = require("./settings")
-const { SolargraphLanguageServer }           = require("./servers/SolargraphLanguageServer")
 const { VersionChecker }                     = require("./other/VersionChecker")
 const { RailsSidebar }                       = require("./sidebars")
 const { isRailsInProject, showNotification } = require("./helpers")
@@ -8,7 +7,6 @@ const { isRailsInProject, showNotification } = require("./helpers")
 const versionChecker = new VersionChecker()
 versionChecker.check()
 
-let langserver = null
 let sidebar    = null
 
 exports.activate = function() {
@@ -29,37 +27,10 @@ exports.activate = function() {
   }
 
   sidebar = new RailsSidebar()
-
-  if (nova.config.get("tommasonegri.rails.config.solargraph.enabled", "boolean")) {
-    langserver = new SolargraphLanguageServer()
-  }
-
-  if (SETTINGS.rubocop.autocorrectOnSave()) {
-    nova.workspace.activeTextEditor.onDidSave((editor) => {
-      const rubocop = new COMMANDS.Rubocop()
-
-      switch (SETTINGS.rubocop.autocorrectOnSave()) {
-        case "Layout (recommended)":
-          rubocop.autocorrectLayout(editor.document)
-          break
-        case "Safe Cops":
-          rubocop.autocorrect(editor.document)
-          break
-        case "Safe & Unsafe Cops":
-          rubocop.autocorrectAll(editor.document)
-          break
-      }
-    })
-  }
 }
 
 exports.deactivate = function() {
   // Clean up state before the extension is deactivated
-  if (langserver) {
-    langserver.deactivate()
-    langserver = null
-  }
-
   if (sidebar) {
     sidebar.deactivate()
     sidebar = null
@@ -119,7 +90,7 @@ nova.commands.register('tommasonegri.rails.commands.documentation.openStimulusRe
 })
 nova.commands.register('tommasonegri.rails.commands.documentation.openExtensionWiki', () => {
     const railsDocumentation = new COMMANDS.RailsDocumentation()
-    railsDocumentation.openDocs('https://github.com/tommasongr/nova-rails/wiki')
+    railsDocumentation.openDocs('https://github.com/nova-ruby/rails/wiki')
 })
 
 // Register a Nova command for Searching the Documentation with the Command Palette
@@ -172,28 +143,4 @@ nova.commands.register('tommasonegri.rails.commands.importmap.pin', () => {
 nova.commands.register('tommasonegri.rails.commands.importmap.unpin', () => {
   const railsImportmap = new COMMANDS.RailsImportmap()
   railsImportmap.unpin()
-})
-
-// Register Nova commands for running Rubocop commands
-nova.commands.register('tommasonegri.rails.commands.rubocop.offenses.list', () => {
-  const rubocop = new COMMANDS.Rubocop()
-  rubocop.listOffenses()
-})
-nova.commands.register('tommasonegri.rails.commands.rubocop.autocorrect', (editor) => {
-  const rubocop = new COMMANDS.Rubocop()
-  rubocop.autocorrect(editor.document)
-})
-nova.commands.register('tommasonegri.rails.commands.rubocop.autocorrect.layout', (editor) => {
-  const rubocop = new COMMANDS.Rubocop()
-  rubocop.autocorrectLayout(editor.document)
-})
-nova.commands.register('tommasonegri.rails.commands.rubocop.autocorrect.all', (editor) => {
-  nova.workspace.showActionPanel("Are you sure?", {
-    buttons: ["Proceed", "Cancel"]
-  }, (action) => {
-    if (action == 0) {
-      const rubocop = new COMMANDS.Rubocop()
-      rubocop.autocorrectAll(editor.document)
-    }
-  })
 })

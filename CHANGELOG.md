@@ -138,7 +138,7 @@
 ### FEATURES
 
 - Added new Clips for Stimulus in HTML (100% coverage). Every Clip uses official naming conventions for placeholders, suggesting you the correct text format (camelCase, kebab-case, etc).
-![Stimulus Clips](https://raw.githubusercontent.com/tommasongr/nova-rails/main/docs/images/stimulus-clips.png)
+![Stimulus Clips](https://raw.githubusercontent.com/nova-ruby/rails/main/docs/images/stimulus-clips.png)
 
 ### IMPROVE
 
