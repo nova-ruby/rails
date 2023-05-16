@@ -197,3 +197,8 @@ nova.commands.register('tommasonegri.rails.commands.rubocop.autocorrect.all', (e
     }
   })
 })
+
+nova.commands.register("tommasonegri.rails.commands.showRelatedFiles", () => {
+  const relatedFiles = new COMMANDS.RailsRelatedFiles()
+  relatedFiles.run(nova.workspace.activeTextEditor.document.path)
+})

@@ -276,6 +276,11 @@
     ],
     "editor": [
       {
+        "title": "Show related files",
+        "command": "tommasonegri.rails.commands.showRelatedFiles",
+        "shortcut": "ctrl-opt-p"
+      },
+      {
         "title": "ERB Tag Switcher",
         "command": "tommasonegri.rails.commands.erb.tagSwitcher",
         "shortcut": "cmd-shift->",
