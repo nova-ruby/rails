@@ -144,3 +144,9 @@ nova.commands.register('tommasonegri.rails.commands.importmap.unpin', () => {
   const railsImportmap = new COMMANDS.RailsImportmap()
   railsImportmap.unpin()
 })
+
+// Register Nova command for showing related files
+nova.commands.register("tommasonegri.rails.commands.showRelatedFiles", () => {
+  const relatedFiles = new COMMANDS.RailsRelatedFiles()
+  relatedFiles.run(nova.workspace.activeTextEditor.document.path)
+})

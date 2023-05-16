@@ -6,6 +6,7 @@ const { RailsInfo } = require("./commands/RailsInfo")
 const { RailsMigrations } = require("./commands/RailsMigrations")
 const { RailsServer } = require("./commands/RailsServer")
 const { RailsStimulus } = require("./commands/RailsStimulus")
+const RailsRelatedFiles = require("./commands/RailsRelatedFiles")
 
 module.exports = {
   erbTagSwitcher,
@@ -15,5 +16,6 @@ module.exports = {
   RailsInfo,
   RailsMigrations,
   RailsServer,
-  RailsStimulus
+  RailsStimulus,
+  RailsRelatedFiles
 }
