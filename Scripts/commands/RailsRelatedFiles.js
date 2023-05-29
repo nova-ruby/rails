@@ -93,7 +93,8 @@ const PATTERNS = [
     "regex": ".+\/(app|lib)\/(.+).rb",
     "paths": [
       "spec/$2_spec.rb",
-      "test/$2_test.rb"
+      "test/$2_test.rb",
+      "config/locales/$2/**"
     ]
   },
   {
@@ -110,7 +111,8 @@ const PATTERNS = [
       "app/helpers/$1_helper.rb",
       "config/routes.rb",
       "spec/requests/$1_spec.rb",
-      "spec/routing/$1_routing_spec.rb"
+      "spec/routing/$1_routing_spec.rb",
+      "config/locales/views/$1/**"
     ]
   },
   {
@@ -119,7 +121,8 @@ const PATTERNS = [
       "app/views/$1/**",
       "app/controllers/$1_controller.rb",
       "config/routes.rb",
-      "spec/requests/$1_spec.rb"
+      "spec/requests/$1_spec.rb",
+      "config/locales/helpers/$1/**"
     ]
   },
   {
@@ -127,10 +130,50 @@ const PATTERNS = [
     "paths": [
       "app/views/$1/**",
       "app/controllers/$1_controller.rb",
+      "app/mailers/$1.rb",
       "app/helpers/$1_helper.rb",
       "config/routes.rb",
       "spec/controllers/$1_spec.rb",
-      "spec/requests/$1_spec.rb"
+      "spec/requests/$1_spec.rb",
+      "config/locales/views/$1/**"
+    ]
+  },
+  {
+    "regex": ".+\/app/mailers\/(.+)_mailer.rb",
+    "paths": [
+      "app/views/$1_mailer/**",
+      "test/mailers/previews/$1_mailer_preview.rb",
+      "spec/mailers/$1_spec.rb",
+      "config/locales/mailers/$1/**"
+    ]
+  },
+  {
+    "regex": ".+\/config\/locales\/helpers\/(.*)\/[^\/].+",
+    "paths": [
+      "app/helpers/$1_helper.rb",
+      "config/locales/helpers/$1/**"
+    ]
+  },
+  {
+    "regex": ".+\/config\/locales\/models\/(.*)\/[^\/].+",
+    "paths": [
+      "app/models/$1.rb",
+      "config/locales/models/$1/**"
+    ]
+  },
+  {
+    "regex": ".+\/config\/locales\/views\/(.*)\/[^\/].+",
+    "paths": [
+      "app/views/$1/**",
+      "app/controllers/$1_controller.rb",
+      "config/locales/views/$1/**"
+    ]
+  },
+  {
+    "regex": ".+\/config\/locales\/mailers\/(.*)\/[^\/].+",
+    "paths": [
+      "app/mailers/$1.rb",
+      "config/locales/mailers/$1/**"
     ]
   },
   {
