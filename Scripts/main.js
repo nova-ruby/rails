@@ -150,3 +150,9 @@ nova.commands.register("tommasonegri.rails.commands.showRelatedFiles", (editor) 
   const relatedFiles = new COMMANDS.RailsRelatedFiles()
   relatedFiles.run(editor.document.path)
 })
+
+// Register Nova command for previewing mailers
+nova.commands.register("tommasonegri.rails.commands.previewMailer", (editor) => {
+  const mailerPreview = new COMMANDS.MailerPreview()
+  mailerPreview.preview(editor.document.path)
+})
