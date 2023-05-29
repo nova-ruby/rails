@@ -3,7 +3,7 @@
   "name": "Ruby on Rails",
   "organization": "Tommaso Negri",
   "description": "Ruby on Rails and Ruby support for Nova editor.",
-  "version": "6.2",
+  "version": "8.0",
   "main": "main.js",
   "license": "MIT",
   "keywords": [
@@ -18,7 +18,7 @@
   ],
   "repository": "https://github.com/nova-ruby/rails",
   "homepage": "https://tommasonegri.com/?ref=nova-rails",
-  "funding": "https://www.paypal.com/paypalme/tommasonegri/15EUR",
+  "funding": "https://www.paypal.com/paypalme/tommasonegri/25EUR",
   "bugs": "https://github.com/nova-ruby/rails/issues",
   "categories": [
     "clips",
@@ -203,6 +203,11 @@
         "filters": {
           "syntaxes": ["erb", "html+erb"]
         }
+      },
+      { "separator": true },
+      {
+        "title": "Preview mailer",
+        "command": "tommasonegri.rails.commands.previewMailer"
       }
     ],
     "command-palette": [

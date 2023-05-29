@@ -19,6 +19,7 @@ Provides Ruby on Rails support for Panic's Nova text editor.
 - migrate and rollback database
 - open alternate files
 - go to alternate files
+- preview mailers
 - search on various documentations
 - Rails task templates
 - kill puma server (useful after crash)

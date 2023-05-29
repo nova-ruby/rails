@@ -1,3 +1,13 @@
+## Version 8.0
+
+### FEAT
+
+- Add Preview mailer command
+
+### IMPROVE
+
+- Improve related files command by looking for mailers and locales files
+
 ## Version 7.0
 
 ### FEAT
